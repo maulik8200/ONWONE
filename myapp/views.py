@@ -240,7 +240,35 @@ def register(request):
 
 
 def account(request):
-    return render(request, 'account.html')
+    billing_address = None
+    if request.user.is_authenticated:
+        try:
+            billing_address = request.user.billing_address
+        except BillingAddress.DoesNotExist:
+            billing_address = None
+
+    return render(request, 'account.html', {'billing_address': billing_address})
 
 def account_billing_address(request):
+    if request.method == 'POST':
+        user = request.user
+        data = request.POST
+
+        billing_data = {
+            'first_name': data.getlist('dzName')[0],
+            'company_name': data.getlist('dzName')[1],
+            'country': data.getlist('dzName')[2],
+            'street_address_1': data.getlist('dzName')[3],
+            'street_address_2': data.getlist('dzName')[4],
+            'city': data.getlist('dzName')[5],
+            'state': data.getlist('dzName')[6],
+            'postcode': data.getlist('dzName')[7],
+            'phone': data.getlist('dzName')[8],
+            'email': data.getlist('dzName')[9],
+        }
+
+        BillingAddress.objects.update_or_create(user=user, defaults=billing_data)
+
+        return redirect('account')  # redirect after save
+
     return render(request, 'account_billing_address.html')

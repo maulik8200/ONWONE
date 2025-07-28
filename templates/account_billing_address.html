@@ -31,17 +31,12 @@
 
             <section class="col-xl-12 account-wrapper">
                 <div class="account-card">
-                    <form class="row" action="#">
+                    <form class="row" action="#" method="POST">
+                        {% csrf_token %}
                         <h3 class="m-b30">Billing address</h3>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group m-b25">
-                                <label class="label-title">First Name</label>
-                                <input name="dzName" required="" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group m-b25">
-                                <label class="label-title">Last Name</label>
+                                <label class="label-title">Name</label>
                                 <input name="dzName" required="" class="form-control">
                             </div>
                         </div>
@@ -96,8 +91,9 @@
                                 <input name="dzName" required="" class="form-control">
                             </div>
                         </div>
-                    </form>
+                    
                     <button class="btn btn-secondary">Save changes</button>
+                    </form>
                 </div>
             </section>
 

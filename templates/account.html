@@ -39,23 +39,30 @@
                         <div class="address-card">
                             <div class="account-address-box">
                                 <h6 class="mb-3">Billing address</h6>
+                                {% if billing_address %}
                                 <ul>
-                                    <li>John Doe</li>
-                                    <li>Londan</li>
-                                    <li>Mo. 012-345-6789</li>
-                                    <li>johndoe@example.com</li>
+                                    <li>{{ billing_address.first_name }}</li>
+                                    <li>{{ billing_address.city }}</li>
+                                    <li>Mo. {{ billing_address.phone }}</li>
+                                    <li>{{ billing_address.email }}</li>
                                 </ul>
+                                {% else %}
+                                <p>No billing address saved yet.</p>
+                                {% endif %}
                             </div>
                             <div class="account-address-bottom">
-                                <a href="" class="d-block me-3"><i
-                                        class="fa-solid fa-pen me-2"></i>Edit</a>
-                                <a href="javascript:void(0);" class="d-block me-3"><i
-                                        class="fa-solid fa-trash-can me-2"></i>Remove</a>
+                                <a href="" class="d-block me-3">
+                                    <i class="fa-solid fa-pen me-2"></i>Edit
+                                </a>
+                                <a href="" class="d-block me-3">
+                                    <i class="fa-solid fa-trash-can me-2"></i>Remove
+                                </a>
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
+
                     <div class="col-6">
                         <div class="account-card-add">
                             <div class="account-address-add">
@@ -73,7 +80,8 @@
                                 </svg>
                             </div>
                             <h4 class="mb-3">Add New Address</h4>
-                            <button onclick="window.location.href='{% url 'account-billing-address' %}'" class="btn btn-primary px-5">Add</button>
+                            <button onclick="window.location.href='{% url 'account-billing-address' %}'"
+                                class="btn btn-primary px-5">Add</button>
                         </div>
                     </div>
 
