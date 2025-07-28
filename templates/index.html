@@ -1,0 +1,504 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="page-content bg-light">
+
+	<div class="main-slider-wrapper">
+		<div class="slider-inner">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="slider-main">
+						{% for product in slider_items %}
+						<div class="slick-slide">
+							<div class="content-info">
+								<h1 class="title">
+									{{ product.title }}
+								</h1>
+							</div>
+						</div>
+						{% endfor %}
+
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="slider-thumbs">
+
+						{% for product in slider_items %}
+						<div class="slick-slide">
+							<div class="banner-media" data-name="
+							{{ product.season }}">
+								<div class="img-preview">
+									<img src="
+									{{ product.image.url }}" class="img-fluid" loading="lazy" {% if product.image %} alt="{{ product.title }}" {%
+										else %} alt="banner-media" {% endif %}>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+			<div class="bottom-content align-items-end wow fadeInUp" data-wow-delay="1.0s">
+				<svg xmlns="http://www.w3.org/2000/svg" width="76" height="76" viewbox="0 0 76 76" fill="none">
+					<path
+						d="M52.6617 37.6496L58.7381 40.0325L75.0609 49.0874L66.6016 63.7422L49.9214 54.6872L45.1557 50.7554L46.1088 57.1892V75.18H28.952V57.1892L30.0243 50.5171L24.9011 54.6872L8.45924 63.7422L0 49.0874L16.3228 39.7942L22.3991 37.6496L16.3228 35.1475L0 26.2117L8.45924 11.557L25.1394 20.4928L30.0243 24.6629L28.952 18.3482V0H46.1088V18.3482L45.1557 24.4246L49.9214 20.4928L66.6016 11.557L75.0609 26.2117L58.7381 35.3858L52.6617 37.6496Z"
+						fill="black"></path>
+				</svg>
+				<div>
+					<span class="sub-title">Summer Collection</span>
+					<h4 class="title">Trendy and Classic for the New Season</h4>
+				</div>
+			</div>
+			<svg class="star-1" xmlns="http://www.w3.org/2000/svg" width="94" height="94" viewbox="0 0 94 94"
+				fill="none">
+				<path
+					d="M47 0L53.8701 30.4141L80.234 13.766L63.5859 40.1299L94 47L63.5859 53.8701L80.234 80.234L53.8701 63.5859L47 94L40.1299 63.5859L13.766 80.234L30.4141 53.8701L0 47L30.4141 40.1299L13.766 13.766L40.1299 30.4141L47 0Z"
+					fill="#FEEB9D"></path>
+			</svg>
+			<svg class="star-2" xmlns="http://www.w3.org/2000/svg" width="82" height="94" viewbox="0 0 82 94"
+				fill="none">
+				<path
+					d="M41 0L45.277 39.592L81.7032 23.5L49.554 47L81.7032 70.5L45.277 54.408L41 94L36.723 54.408L0.296806 70.5L32.446 47L0.296806 23.5L36.723 39.592L41 0Z"
+					fill="black"></path>
+			</svg>
+			<a class="animation-btn popup-youtube" href="https://www.youtube.com/watch?v=YwYoyQ1JdpQ">
+				<div class="text-row word-rotate-box c-black">
+					<span class="word-rotate"> More Collection Explore </span>
+					<i class="fa-solid fa-play text-dark badge__emoji"></i>
+				</div>
+			</a>
+		</div>
+	</div>
+
+
+
+
+
+	<!-- Trending Products -->
+	<section class="content-inner">
+		<div class="container">
+			<div class=" row justify-content-md-between align-items-start">
+				<div class="col-lg-6 col-md-12">
+					<div class="section-head style-1 m-b30  wow fadeInUp" data-wow-delay="0.2s"
+						style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+						<div class="left-content">
+							<h2 class="title">What's trending now</h2>
+							<p>Discover the most trending products in onowne.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12">
+					<div class="site-filters clearfix style-1 align-items-center wow fadeInUp ms-lg-auto"
+						data-wow-delay="0.4s"
+						style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+						<ul class="filters" data-bs-toggle="buttons">
+							<li class="btn active">
+								<input type="radio">
+								<a href="javascript:void(0);">ALL</a>
+							</li>
+							<li data-filter=".Dresses" class="btn">
+								<input type="radio">
+								<a href="javascript:void(0);">Dresses</a>
+							</li>
+							<li data-filter=".Tops" class="btn">
+								<input type="radio">
+								<a href="javascript:void(0);">Tops</a>
+							</li>
+							<li data-filter=".Outerwear" class="btn">
+								<input type="radio">
+								<a href="javascript:void(0);">Outerwear</a>
+							</li>
+							<li data-filter=".Jacket" class="btn">
+								<input type="radio">
+								<a href="javascript:void(0);">Jacket</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<ul id="masonry" class="row g-xl-4 g-3" style="position: relative; height: 948.75px;">
+					<li class="card-container col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6 Tops wow fadeInUp"
+						data-wow-delay="0.6s"
+						style="position: absolute; left: 0px; top: 0px; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+						<div class="shop-card">
+							<div class="dz-media">
+								<img src="https://pixio.dexignzone.com/xhtml/images/shop/product/2.png" alt="image">
+								<div class="shop-meta">
+									<a href="javascript:void(0);" class="btn btn-secondary btn-md btn-rounded"
+										data-bs-toggle="modal" data-bs-target="#exampleModal">
+										<i class="fa-solid fa-eye d-md-none d-block"></i>
+										<span class="d-md-block d-none">Quick View</span>
+									</a>
+									<div class="btn btn-primary meta-icon dz-wishicon">
+										<i class="icon feather icon-heart dz-heart"></i>
+										<i class="icon feather icon-heart-on dz-heart-fill"></i>
+									</div>
+									<div class="btn btn-primary meta-icon dz-carticon">
+										<i class="flaticon flaticon-basket"></i>
+										<i class="flaticon flaticon-basket-on dz-heart-fill"></i>
+									</div>
+								</div>
+							</div>
+							<div class="dz-content">
+								<h5 class="title"><a href="shop-list.html">Cozy Knit Cardigan Sweater</a></h5>
+								<h5 class="price">$80</h5>
+							</div>
+							<div class="product-tag">
+								<span class="badge ">Get 20% Off</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<!-- Trending Products end -->
+
+
+
+
+
+
+
+
+	<!-- video start -->
+	<section class="video-section">
+		<div class="video-wrapper bg-parallax"
+			style="background-image: url(&quot;images/background/bg2.jpg&quot;); background-position-y: 52px;">
+			<div class="container">
+				<div class="d-flex justify-content-center">
+					<a class="icon-button popup-youtube" href="https://www.youtube.com/watch?v=YwYoyQ1JdpQ">
+						<div class="text-row word-rotate-box border-white c-black">
+
+							<svg class="badge__emoji" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+								viewBox="0 0 40 40" fill="none">
+								<g clip-path="url(#clip0_671_345)">
+									<path
+										d="M34.6779 15.3843L11.0529 0.821429C9.34369 -0.230839 7.2772 -0.274589 5.52493 0.704398C3.77266 1.68323 2.72656 3.46612 2.72656 5.47323V34.4664C2.72656 37.5013 5.17188 39.9835 8.17735 39.9999C8.18556 39.9999 8.19376 40 8.20181 40C9.14103 39.9999 10.1198 39.7056 11.0339 39.1478C11.7693 38.6991 12.0017 37.7392 11.5531 37.0039C11.1044 36.2685 10.1444 36.0361 9.40923 36.4848C8.98165 36.7456 8.56407 36.8805 8.19415 36.8804C7.06016 36.8742 5.84602 35.9028 5.84602 34.4665V5.47331C5.84602 4.6123 6.29477 3.84769 7.04634 3.42776C7.79798 3.00784 8.68431 3.02659 9.41658 3.47745L33.0417 18.0404C33.7518 18.4776 34.1581 19.2065 34.1564 20.0405C34.1547 20.8743 33.7454 21.6016 33.0314 22.0373L15.9503 32.4958C15.2156 32.9456 14.9847 33.9059 15.4346 34.6405C15.8843 35.3752 16.8446 35.6061 17.5792 35.1563L34.6583 24.6991C36.2935 23.7015 37.2721 21.9624 37.276 20.0467C37.2799 18.1312 36.3083 16.3881 34.6779 15.3843Z"
+										fill="#FEEB9D"></path>
+								</g>
+								<defs>
+									<clipPath id="clip0_671_345">
+										<rect width="40" height="40" fill="white"></rect>
+									</clipPath>
+								</defs>
+							</svg>
+							<span class="text__char" style="--char-rotate :0deg">s</span><span class="text__char"
+								style="--char-rotate :13.333333333333334deg">h</span><span class="text__char"
+								style="--char-rotate :26.666666666666668deg">o</span><span class="text__char"
+								style="--char-rotate :40deg">p</span><span class="text__char"
+								style="--char-rotate :53.333333333333336deg"> </span><span class="text__char"
+								style="--char-rotate :66.66666666666667deg">-</span><span class="text__char"
+								style="--char-rotate :80deg"> </span><span class="text__char"
+								style="--char-rotate :93.33333333333334deg">s</span><span class="text__char"
+								style="--char-rotate :106.66666666666667deg">h</span><span class="text__char"
+								style="--char-rotate :120deg">o</span><span class="text__char"
+								style="--char-rotate :133.33333333333334deg">p</span><span class="text__char"
+								style="--char-rotate :146.66666666666669deg"> </span><span class="text__char"
+								style="--char-rotate :160deg">-</span><span class="text__char"
+								style="--char-rotate :173.33333333333334deg"> </span><span class="text__char"
+								style="--char-rotate :186.66666666666669deg">s</span><span class="text__char"
+								style="--char-rotate :200deg">h</span><span class="text__char"
+								style="--char-rotate :213.33333333333334deg">o</span><span class="text__char"
+								style="--char-rotate :226.66666666666669deg">p</span><span class="text__char"
+								style="--char-rotate :240deg"> </span><span class="text__char"
+								style="--char-rotate :253.33333333333334deg">-</span><span class="text__char"
+								style="--char-rotate :266.6666666666667deg"> </span><span class="text__char"
+								style="--char-rotate :280deg">s</span><span class="text__char"
+								style="--char-rotate :293.33333333333337deg">h</span><span class="text__char"
+								style="--char-rotate :306.6666666666667deg">o</span><span class="text__char"
+								style="--char-rotate :320deg">p</span><span class="text__char"
+								style="--char-rotate :333.33333333333337deg"> </span><span class="text__char"
+								style="--char-rotate :346.6666666666667deg">-</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="dz-features-wrapper overflow-hidden">
+			<ul class="dz-features text-wrapper">
+				<li class="item">
+					<h2 class="title">Jacket</h2>
+				</li>
+				<li class="item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="61" height="60" viewBox="0 0 61 60" fill="none">
+						<path opacity="0.3"
+							d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
+							fill="black"></path>
+					</svg>
+				</li>
+				<li class="item">
+					<h2 class="title">Jeans</h2>
+				</li>
+				<li class="item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="61" height="60" viewBox="0 0 61 60" fill="none">
+						<path opacity="0.3"
+							d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
+							fill="black"></path>
+					</svg>
+				</li>
+				<li class="item">
+					<h2 class="title">Shirts</h2>
+				</li>
+				<li class="item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="61" height="60" viewBox="0 0 61 60" fill="none">
+						<path opacity="0.3"
+							d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
+							fill="black"></path>
+					</svg>
+				</li>
+				<li class="item">
+					<h2 class="title">Shorts</h2>
+				</li>
+				<li class="item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="61" height="60" viewBox="0 0 61 60" fill="none">
+						<path opacity="0.3"
+							d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
+							fill="black"></path>
+					</svg>
+				</li>
+				<li class="item">
+					<h2 class="title">t-shirt</h2>
+				</li>
+				<li class="item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="61" height="60" viewBox="0 0 61 60" fill="none">
+						<path opacity="0.3"
+							d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
+							fill="black"></path>
+					</svg>
+				</li>
+				<li class="item">
+					<h2 class="title">Blazer</h2>
+				</li>
+				<li class="item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="61" height="60" viewBox="0 0 61 60" fill="none">
+						<path opacity="0.3"
+							d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
+							fill="black"></path>
+					</svg>
+				</li>
+				<li class="item">
+					<h2 class="title">Jacket</h2>
+				</li>
+				<li class="item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="61" height="60" viewBox="0 0 61 60" fill="none">
+						<path opacity="0.3"
+							d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
+							fill="black"></path>
+					</svg>
+				</li>
+				<li class="item">
+					<h2 class="title">Jeans</h2>
+				</li>
+				<li class="item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="61" height="60" viewBox="0 0 61 60" fill="none">
+						<path opacity="0.3"
+							d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
+							fill="black"></path>
+					</svg>
+				</li>
+				<li class="item">
+					<h2 class="title">Shirts</h2>
+				</li>
+				<li class="item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="61" height="60" viewBox="0 0 61 60" fill="none">
+						<path opacity="0.3"
+							d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
+							fill="black"></path>
+					</svg>
+				</li>
+				<li class="item">
+					<h2 class="title">Shorts</h2>
+				</li>
+				<li class="item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="61" height="60" viewBox="0 0 61 60" fill="none">
+						<path opacity="0.3"
+							d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
+							fill="black"></path>
+					</svg>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<!-- video end -->
+
+
+
+
+
+
+
+	<!-- Trending Products -->
+	<section class="content-inner">
+		<div class="container">
+			<div class=" row justify-content-md-between align-items-start">
+				<div class="col-lg-6 col-md-12">
+					<div class="section-head style-1 m-b30  wow fadeInUp" data-wow-delay="0.2s"
+						style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+						<div class="left-content">
+							<h2 class="title">Most popular products</h2>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12">
+					<div class="site-filters clearfix style-1 align-items-center wow fadeInUp ms-lg-auto"
+						data-wow-delay="0.4s"
+						style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+						<ul class="filters" data-bs-toggle="buttons">
+							<li class="btn active">
+								<input type="radio">
+								<a href="javascript:void(0);">ALL</a>
+							</li>
+							<li data-filter=".Dresses" class="btn">
+								<input type="radio">
+								<a href="javascript:void(0);">Dresses</a>
+							</li>
+							<li data-filter=".Tops" class="btn">
+								<input type="radio">
+								<a href="javascript:void(0);">Tops</a>
+							</li>
+							<li data-filter=".Outerwear" class="btn">
+								<input type="radio">
+								<a href="javascript:void(0);">Outerwear</a>
+							</li>
+							<li data-filter=".Jacket" class="btn">
+								<input type="radio">
+								<a href="javascript:void(0);">Jacket</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<ul id="masonry" class="row g-xl-4 g-3" style="position: relative; height: 948.75px;">
+					<li class="card-container col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6 Tops wow fadeInUp"
+						data-wow-delay="0.6s"
+						style="position: absolute; left: 0px; top: 0px; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+						<div class="shop-card">
+							<div class="dz-media">
+								<img src="https://pixio.dexignzone.com/xhtml/images/shop/product/2.png" alt="image">
+								<div class="shop-meta">
+									<a href="javascript:void(0);" class="btn btn-secondary btn-md btn-rounded"
+										data-bs-toggle="modal" data-bs-target="#exampleModal">
+										<i class="fa-solid fa-eye d-md-none d-block"></i>
+										<span class="d-md-block d-none">Quick View</span>
+									</a>
+									<div class="btn btn-primary meta-icon dz-wishicon">
+										<i class="icon feather icon-heart dz-heart"></i>
+										<i class="icon feather icon-heart-on dz-heart-fill"></i>
+									</div>
+									<div class="btn btn-primary meta-icon dz-carticon">
+										<i class="flaticon flaticon-basket"></i>
+										<i class="flaticon flaticon-basket-on dz-heart-fill"></i>
+									</div>
+								</div>
+							</div>
+							<div class="dz-content">
+								<h5 class="title"><a href="shop-list.html">Cozy Knit Cardigan Sweater</a></h5>
+								<h5 class="price">$80</h5>
+							</div>
+							<div class="product-tag">
+								<span class="badge ">Get 20% Off</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<!-- Trending Products end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="content-inner py-0  image-wrapper">
+		<div class="container-fluid px-0">
+			<div class="row gx-0">
+				<div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn" data-wow-delay="0.1s"
+					style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;">
+					<div class="insta-post dz-media dz-img-effect rotate">
+						<a href="portfolio-tiles.html">
+							<img src="https://pixio.dexignzone.com/xhtml/images/clothe/feature/1.png" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn" data-wow-delay="0.2s"
+					style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;">
+					<div class="insta-post dz-media dz-img-effect rotate">
+						<a href="portfolio-tiles.html">
+							<img src="https://pixio.dexignzone.com/xhtml/images/clothe/feature/1.png" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn" data-wow-delay="0.3s"
+					style="visibility: visible; animation-delay: 0.3s; animation-name: fadeIn;">
+					<div class="insta-post dz-media dz-img-effect rotate">
+						<a href="portfolio-tiles.html">
+							<img src="https://pixio.dexignzone.com/xhtml/images/clothe/feature/1.png" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn" data-wow-delay="0.4s"
+					style="visibility: visible; animation-delay: 0.4s; animation-name: fadeIn;">
+					<div class="insta-post dz-media dz-img-effect rotate">
+						<a href="portfolio-tiles.html">
+							<img src="https://pixio.dexignzone.com/xhtml/images/clothe/feature/1.png" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn" data-wow-delay="0.5s"
+					style="visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
+					<div class="insta-post dz-media dz-img-effect rotate">
+						<a href="portfolio-tiles.html">
+							<img src="https://pixio.dexignzone.com/xhtml/images/clothe/feature/1.png" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn" data-wow-delay="0.6s"
+					style="visibility: visible; animation-delay: 0.6s; animation-name: fadeIn;">
+					<div class="insta-post dz-media dz-img-effect rotate">
+						<a href="portfolio-tiles.html">
+							<img src="https://pixio.dexignzone.com/xhtml/images/clothe/feature/1.png" alt="">
+						</a>
+					</div>
+				</div>
+				<a href="https://www.instagram.com/dexignzone/" class="instagram-link">
+					<div class="follow-link  wow bounceIn" data-wow-delay="0.1s"
+						style="visibility: visible; animation-delay: 0.1s; animation-name: bounceIn;">
+						<div class="follow-link-icon">
+							<img src="https://pixio.dexignzone.com/xhtml/images/clothe/feature/1.png" alt="">
+						</div>
+						<div class="follow-link-content">
+							<p class="m-0">Follow @Pixio</p>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}

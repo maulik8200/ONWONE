@@ -1,0 +1,424 @@
+{% load static %}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Title -->
+    <title>Onowne: Shop & eCommerce HTML Template</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Onowne">
+    <meta name="robots" content="index, follow">
+    <meta name="format-detection" content="telephone=no">
+
+    <meta name="keywords"
+        content="template, ui kit, clothing, delivery, ecommerce, fashion, order, shopping, store, fashion design, fashion store, responsive design, fashion showcase, modern design, fashion technology, e-shop, ecommerce web, eCommerce Website, minimal shop, online shop, online shopping, pixio, user experience, Design Elements, Trendy, Stylish, User-Friendly, Navigation, Product Display, Branding, Development, Visual Design, UI/UX, Website, Web Design">
+    <meta name="description"
+        content="Elevate your online retail presence with Pixio Shop & eCommerce HTML Template. Crafted with precision, this responsive and feature-rich template provides a seamless and visually stunning shopping experience. Explore a world of possibilities with modern design elements, intuitive navigation, and customizable features. Transform your website into a dynamic online storefront with Pixio, where style meets functionality for a captivating and user-friendly eCommerce journey.">
+
+    <meta property="og:title" content="Onowne: Shop & eCommerce Bootstrap HTML Template | Onowne">
+    <meta property="og:description"
+        content="Elevate your online retail presence with Pixio Shop & eCommerce HTML Template. Crafted with precision, this responsive and feature-rich template provides a seamless and visually stunning shopping experience. Explore a world of possibilities with modern design elements, intuitive navigation, and customizable features. Transform your website into a dynamic online storefront with Pixio, where style meets functionality for a captivating and user-friendly eCommerce journey.">
+    <meta property="og:image" content="https://pixio.dexignzone.com/xhtml/images/logo.svg">
+
+    <!-- TWITTER META -->
+    <meta name="twitter:title" content="Pixio: Shop & eCommerce Bootstrap HTML Template | Onowne">
+    <meta name="twitter:description"
+        content="Elevate your online retail presence with Pixio Shop & eCommerce HTML Template. Crafted with precision, this responsive and feature-rich template provides a seamless and visually stunning shopping experience. Explore a world of possibilities with modern design elements, intuitive navigation, and customizable features. Transform your website into a dynamic online storefront with Pixio, where style meets functionality for a captivating and user-friendly eCommerce journey.">
+    <meta name="twitter:image" content="https://pixio.dexignzone.com/xhtml/images/logo.svg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- CANONICAL URL -->
+    <link rel="canonical" href="index.html">
+
+    <!-- FAVICONS ICON -->
+    <link rel="icon" type="image/x-icon" href="https://pixio.dexignzone.com/xhtml/images/logo.svg">
+
+    <!-- MOBILE SPECIFIC -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'icons/iconly/index.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/magnific-popup/magnific-popup.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/nouislider/nouislider.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/lightgallery/dist/css/lightgallery.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/lightgallery/dist/css/lg-thumbnail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/lightgallery/dist/css/lg-zoom.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick.css' %}">
+
+    <!-- Custom Stylesheet -->
+    <link class="main-css" rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link class="skin" type="text/css" rel="stylesheet" href="{% static 'css/skin/skin-1.css' %}">
+
+    <!-- GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+</head>
+
+<body id="bg">
+
+        <!-- <div id="loading-area" class="preloader-wrapper-4">
+            <img src="images/loading.gif" alt="">
+        </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Header -->
+        <header class="site-header mo-left header style-2">
+
+            <!-- Main Header -->
+            <div class="header-info-bar">
+                <div class="container clearfix">
+
+                    <!-- Website Logo -->
+                    <div class="logo-header logo-dark">
+                        <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt="logo"></a>
+                    </div>
+
+                    <!-- EXTRA NAV -->
+                    <div class="extra-nav d-md-flex d-none">
+                        <div class="extra-cell">
+                            <ul class="navbar-nav header-right m-0">
+                                <li class="nav-item info-box ">
+                                    <div class="nav-link">
+                                        <div class="info-content">
+                                            <a href="{% url 'login' %}">login</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- header search nav -->
+                    <div class="header-search-nav">
+                        <form class="header-item-search">
+                            <div class="input-group search-input">
+                                <select class="default-select">
+                                    <option>All Categories</option>
+                                    <option>Photography </option>
+                                </select>
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                                    placeholder="Search for products">
+                                <button class="btn" type="button">
+                                    <i class="iconly-Light-Search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Main Header End -->
+
+            <!-- Main Header -->
+            <div class="sticky-header main-bar-wraper navbar-expand-lg">
+                <div class="main-bar clearfix">
+                    <div class="container clearfix d-lg-flex d-block">
+
+                        <!-- Website Logo -->
+                        <div class="logo-header logo-dark">
+                            <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt="logo"></a>
+                        </div>
+
+                        <!-- Nav Toggle Button -->
+                        <button class="navbar-toggler collapsed navicon justify-content-end" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+
+                        <!-- Main Nav -->
+                        <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
+                            <div class="logo-header">
+                                <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt=""></a>
+                            </div>
+                            <ul class="nav navbar-nav">
+                                <li class="has-mega-menu sub-menu-down">
+                                    <a href="{% url 'home' %}"><span>Home</span><i
+                                            class="fas fa-chevron-down tabindex"></i></a>
+                                </li>
+                                <li class="has-mega-menu sub-menu-down">
+                                    <a href="{% url 'shop' %}"><span>Shop</span><i
+                                            class="fas fa-chevron-down tabindex"></i></a>
+                                    <div class="mega-menu shop-menu">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    {% for category, tags in category_tag_map.items %}
+                                                        <div class="col-md-4 col-6">
+                                                            <a href="{% url 'shop' %}?category={{ category.name|urlencode }}" class="menu-title">{{ category.name }}</a>
+                                                            <ul>
+                                                                {% for tag in tags %}
+                                                                    <li>
+                                                                        <a href="{% url 'shop' %}?category={{ category.name|urlencode }}&tag={{ tag.name|urlencode }}">
+                                                                            {{ tag.name }}
+                                                                        </a>
+                                                                    </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="has-mega-menu sub-menu-down">
+                                    <a href="{% url 'about' %}"><span>About US</span><i
+                                            class="fas fa-chevron-down tabindex"></i></a>
+                                </li>
+                                <li class="has-mega-menu sub-menu-down">
+                                    <a href="{% url 'faq' %}"><span>FAQ</span><i
+                                            class="fas fa-chevron-down tabindex"></i></a>
+                                </li>
+                                <li class="has-mega-menu sub-menu-down">
+                                    <a href="{% url 'contact' %}"><span>Contact US</span><i
+                                            class="fas fa-chevron-down tabindex"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- EXTRA NAV -->
+                        <div class="extra-nav">
+                            <div class="extra-cell">
+                                <ul class="header-right">
+                                    <li class="nav-item wishlist-link">
+                                        <a class="nav-link" href="{% url 'wishlist' %}" aria-controls="offcanvasRight">
+                                            <i class="iconly-Light-Heart2"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item cart-link">
+                                        <a href="{% url 'cart' %}" class="nav-link cart-btn"
+                                            aria-controls="offcanvasRight">
+                                            <i class="iconly-Broken-Buy"></i>
+                                            <span class="badge badge-circle">5</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Main Header End -->
+
+        </header>
+        <!-- Header End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {% block content %}
+        <!-- Content will be inserted here -->
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <footer class="site-footer  bg-light">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="widget widget_about me-2 text-center">
+                                <div class="footer-logo logo-white">
+                                    <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="widget widget_services text-center">
+                                <ul class="nav-inline mb-3 text">
+                                    <li><a href="{% url 'about' %}">About Us</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                </ul>
+                                <ul class="nav-inline">
+                                    <li><a href="javascript:void();" target="_blank"
+                                            class="site-button-link facebook hover"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="javascript:void();" target="_blank"
+                                            class="site-button-link google-plus hover"><i
+                                                class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="javascript:void();" target="_blank"
+                                            class="site-button-link linkedin hover"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="javascript:void();" target="_blank"
+                                            class="site-button-link instagram hover"><i
+                                                class="fab fa-instagram"></i></a></li>
+                                    <li><a href="javascript:void();" target="_blank"
+                                            class="site-button-link twitter hover"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row fb-inner">
+                        <div class="col-lg-6 col-md-12 text-start">
+                            <p class="copyright-text">© <span class="current-year">2024</span> <a
+                                    href="https://www.Onowne.com/">Onowne</a> Theme. All Rights Reserved.</p>
+                        </div>
+                        <div class="col-lg-6 col-md-12 text-end">
+                            <div
+                                class="d-flex align-items-center justify-content-center justify-content-md-center justify-content-lg-end">
+                                <span class="me-3">We Accept: </span>
+                                <img src="https://pixio.dexignzone.com/xhtml/images/footer-img.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <button class="scroltop" type="button"><i class="fas fa-arrow-up"></i></button>
+
+
+    </div>
+    <!-- JAVASCRIPT FILES ========================================= -->
+    <script src="{% static 'js/jquery.min.js' %}"></script><!-- JQUERY MIN JS -->
+    <script src="{% static 'vendor/wow/wow.min.js' %}"></script><!-- WOW JS -->
+    <script src="{% static 'vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script><!-- BOOTSTRAP MIN JS -->
+    <script src="{% static 'vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+    <!-- BOOTSTRAP SELECT MIN JS -->
+    <script src="{% static 'vendor/bootstrap-touchspin/bootstrap-touchspin.js' %}"></script>
+    <!-- BOOTSTRAP TOUCHSPIN JS -->
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script><!-- SWIPER JS -->
+    <script src="{% static 'vendor/magnific-popup/magnific-popup.js' %}"></script><!-- MAGNIFIC POPUP JS -->
+    <script src="{% static 'vendor/imagesloaded/imagesloaded.js' %}"></script><!-- IMAGESLOADED-->
+    <script src="{% static 'vendor/masonry/masonry-4.2.2.js' %}"></script><!-- MASONRY -->
+    <script src="{% static 'vendor/masonry/isotope.pkgd.min.js' %}"></script><!-- ISOTOPE -->
+    <script src="{% static 'vendor/countdown/jquery.countdown.js' %}"></script><!-- COUNTDOWN FUCTIONS  -->
+    <script src="{% static 'vendor/wnumb/wNumb.js' %}"></script><!-- WNUMB -->
+    <script src="{% static 'vendor/nouislider/nouislider.min.js' %}"></script><!-- NOUSLIDER MIN JS-->
+    <script src="{% static 'vendor/slick/slick.min.js' %}"></script><!-- CAROUSEL MIN JS -->
+    <script src="{% static 'vendor/lightgallery/dist/lightgallery.min.js' %}"></script>
+    <script src="{% static 'vendor/lightgallery/dist/plugins/thumbnail/lg-thumbnail.min.js' %}"></script>
+    <script src="{% static 'vendor/lightgallery/dist/plugins/zoom/lg-zoom.min.js' %}"></script>
+    <script src="{% static 'js/dz.carousel.js' %}"></script><!-- DZ CAROUSEL JS -->
+    <script src="{% static 'js/dz.ajax.js' %}"></script><!-- AJAX -->
+    <script src="{% static 'js/custom.min.js' %}"></script><!-- CUSTOM JS -->
+</body>
+
+</html>

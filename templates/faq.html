@@ -1,0 +1,758 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+<div class="page-content bg-light">
+
+    <section class="px-3">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 faq-side-content">
+                <div class="dz-bnr-inr-entry wow fadeInUp" data-wow-delay="0.1s">
+                    <h1>Have any questions? </h1>
+                    <nav aria-label="breadcrumb text-align-start" class="breadcrumb-row mb-lg-4 mb-3">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"> Home</a></li>
+                            <li class="breadcrumb-item">Faq’s 2</li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="dz-tabs style-1 tab-space wow fadeInUp" data-wow-delay="0.2s">
+                    <ul class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <li class="nav-link active" id="food-1-tab" data-bs-toggle="tab" data-bs-target="#food-1"
+                            role="tab" aria-controls="food-1">
+                            <i class="icon feather icon-box"></i>
+                            <span>General</span>
+                        </li>
+                        <li class="nav-link" id="food-2-tab" data-bs-toggle="tab" data-bs-target="#food-2" role="tab"
+                            aria-controls="food-2">
+                            <i class="icon feather icon-shopping-cart"></i>
+                            <span>Returns</span>
+                        </li>
+                        <li class="nav-link" id="food-3-tab" data-bs-toggle="tab" data-bs-target="#food-3" role="tab"
+                            aria-controls="food-3">
+                            <i class="icon feather icon-gift"></i>
+                            <span>Gift</span>
+                        </li>
+                        <li class="nav-link" id="food-4-tab" data-bs-toggle="tab" data-bs-target="#food-4" role="tab"
+                            aria-controls="food-4">
+                            <i class="icon feather icon-dollar-sign"></i>
+                            <span>Refunds</span>
+                        </li>
+                        <li class="nav-link" id="food-5-tab" data-bs-toggle="tab" data-bs-target="#food-5" role="tab"
+                            aria-controls="food-5">
+                            <i class="icon feather icon-credit-card"></i>
+                            <span>Payments</span>
+                        </li>
+                        <li class="nav-link" id="food-6-tab" data-bs-toggle="tab" data-bs-target="#food-6" role="tab"
+                            aria-controls="food-6">
+                            <i class="icon feather icon-truck"></i>
+                            <span>Shipping</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dz-media d-none d-lg-block d-xl-block wow fadeInUp rounded" data-wow-delay="0.3s">
+                    <img class="media" src="images/faq/pic1.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12 faq-end-content">
+                <div class="faq-head wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="search_widget wow fadeInUp" data-wow-delay="0.3s">
+                        <form class="dzSearch">
+                            <div class="form-group">
+                                <div class="input-group mb-0">
+                                    <input name="dzSearch" type="search" class="form-control" placeholder="Search FAQ">
+                                    <div class="input-group-addon">
+                                        <button name="dzSearch" value="search" class="btn">
+                                            <i class="icon feather icon-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-content wow fadeInUp" data-wow-delay="0.5s" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="food-1" role="tabpanel" aria-labelledby="food-1-tab"
+                        tabindex="0">
+                        <div class="accordion dz-accordion accordion-sm" id="accordionFaq1">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading1">
+                                    <a href="#" class="accordion-button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                        How can I contact customer support?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1"
+                                    data-bs-parent="#accordionFaq1">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading2">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                        Can I cancel my order?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2"
+                                    data-bs-parent="#accordionFaq1">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading3">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        Do you offer international shipping?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3"
+                                    data-bs-parent="#accordionFaq1">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address..</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading4">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                        Can I track my order in real-time?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4"
+                                    data-bs-parent="#accordionFaq1">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading55">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse55" aria-expanded="false" aria-controls="collapse55">
+                                        How do I know if a product is in stock?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse55" class="accordion-collapse collapse" aria-labelledby="heading55"
+                                    data-bs-parent="#accordionFaq1">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading5">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                        Can I place an order over the phone?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5"
+                                    data-bs-parent="#accordionFaq1">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="food-2" role="tabpanel" aria-labelledby="food-2-tab" tabindex="0">
+                        <div class="accordion dz-accordion accordion-sm" id="accordionFaq">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <a href="#" class="accordion-button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        How can I contact customer support?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionFaq">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Can I cancel my order?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionFaq">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        Do you offer international shipping?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionFaq">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address..</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
+                                        Can I track my order in real-time?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                    data-bs-parent="#accordionFaq">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFive" aria-expanded="false"
+                                        aria-controls="collapseFive">
+                                        How do I know if a product is in stock?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                    data-bs-parent="#accordionFaq">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingSix">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                        Can I place an order over the phone?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                                    data-bs-parent="#accordionFaq">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="food-3" role="tabpanel" aria-labelledby="food-3-tab" tabindex="0">
+                        <div class="accordion dz-accordion accordion-sm" id="accordionFaq2">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading6">
+                                    <a href="#" class="accordion-button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse6" aria-expanded="true" aria-controls="collapse6">
+                                        How can I contact customer support?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse6" class="accordion-collapse collapse show" aria-labelledby="heading6"
+                                    data-bs-parent="#accordionFaq2">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading7">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                        Can I cancel my order?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7"
+                                    data-bs-parent="#accordionFaq2">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading8">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                        Do you offer international shipping?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8"
+                                    data-bs-parent="#accordionFaq2">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address..</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading9">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                                        Can I track my order in real-time?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9"
+                                    data-bs-parent="#accordionFaq2">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading10">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                        How do I know if a product is in stock?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10"
+                                    data-bs-parent="#accordionFaq2">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading11">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                                        Can I place an order over the phone?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="heading11"
+                                    data-bs-parent="#accordionFaq2">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="food-4" role="tabpanel" aria-labelledby="food-4-tab" tabindex="0">
+                        <div class="accordion dz-accordion accordion-sm" id="accordionFaq5">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading12">
+                                    <a href="#" class="accordion-button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse12" aria-expanded="true" aria-controls="collapse12">
+                                        How can I contact customer support?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse12" class="accordion-collapse collapse show"
+                                    aria-labelledby="heading12" data-bs-parent="#accordionFaq5">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading13">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                        Can I cancel my order?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse13" class="accordion-collapse collapse" aria-labelledby="heading13"
+                                    data-bs-parent="#accordionFaq5">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading14">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                                        Do you offer international shipping?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse14" class="accordion-collapse collapse" aria-labelledby="heading14"
+                                    data-bs-parent="#accordionFaq5">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address..</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading15">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapse15">
+                                        Can I track my order in real-time?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse15" class="accordion-collapse collapse" aria-labelledby="heading15"
+                                    data-bs-parent="#accordionFaq5">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading16">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse16" aria-expanded="false" aria-controls="collapse16">
+                                        How do I know if a product is in stock?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse16" class="accordion-collapse collapse" aria-labelledby="heading16"
+                                    data-bs-parent="#accordionFaq5">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading17">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse17" aria-expanded="false" aria-controls="collapse17">
+                                        Can I place an order over the phone?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse17" class="accordion-collapse collapse" aria-labelledby="heading17"
+                                    data-bs-parent="#accordionFaq5">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="food-5" role="tabpanel" aria-labelledby="food-5-tab" tabindex="0">
+                        <div class="accordion dz-accordion accordion-sm" id="accordionFaq3">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading18">
+                                    <a href="#" class="accordion-button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse18" aria-expanded="true" aria-controls="collapse18">
+                                        How can I contact customer support?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse18" class="accordion-collapse collapse show"
+                                    aria-labelledby="heading18" data-bs-parent="#accordionFaq3">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading19">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse19" aria-expanded="false" aria-controls="collapse19">
+                                        Can I cancel my order?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse19" class="accordion-collapse collapse" aria-labelledby="heading19"
+                                    data-bs-parent="#accordionFaq3">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading20">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse20" aria-expanded="false" aria-controls="collapse20">
+                                        Do you offer international shipping?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse20" class="accordion-collapse collapse" aria-labelledby="heading20"
+                                    data-bs-parent="#accordionFaq3">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address..</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading21">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse21" aria-expanded="false" aria-controls="collapse21">
+                                        Can I track my order in real-time?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse21" class="accordion-collapse collapse" aria-labelledby="heading21"
+                                    data-bs-parent="#accordionFaq3">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading22">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse22" aria-expanded="false" aria-controls="collapse22">
+                                        How do I know if a product is in stock?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse22" class="accordion-collapse collapse" aria-labelledby="heading22"
+                                    data-bs-parent="#accordionFaq3">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading23">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse23" aria-expanded="false" aria-controls="collapse23">
+                                        Can I place an order over the phone?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse23" class="accordion-collapse collapse" aria-labelledby="heading23"
+                                    data-bs-parent="#accordionFaq3">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="food-6" role="tabpanel" aria-labelledby="food-6-tab" tabindex="0">
+                        <div class="accordion dz-accordion accordion-sm" id="accordionFaq4">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading24">
+                                    <a href="#" class="accordion-button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse24" aria-expanded="true" aria-controls="collapse24">
+                                        How can I contact customer support?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse24" class="accordion-collapse collapse show"
+                                    aria-labelledby="heading24" data-bs-parent="#accordionFaq4">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading25">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse25" aria-expanded="false" aria-controls="collapse25">
+                                        Can I cancel my order?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse25" class="accordion-collapse collapse" aria-labelledby="heading25"
+                                    data-bs-parent="#accordionFaq4">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading26">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse26" aria-expanded="false" aria-controls="collapse26">
+                                        Do you offer international shipping?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse26" class="accordion-collapse collapse" aria-labelledby="heading26"
+                                    data-bs-parent="#accordionFaq4">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address..</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading27">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse27" aria-expanded="false" aria-controls="collapse27">
+                                        Can I track my order in real-time?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse27" class="accordion-collapse collapse" aria-labelledby="heading27"
+                                    data-bs-parent="#accordionFaq4">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading28">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse28" aria-expanded="false" aria-controls="collapse28">
+                                        How do I know if a product is in stock?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse28" class="accordion-collapse collapse" aria-labelledby="heading28"
+                                    data-bs-parent="#accordionFaq4">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading29">
+                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse29" aria-expanded="false" aria-controls="collapse29">
+                                        Can I place an order over the phone?
+                                        <span class="toggle-close"></span>
+                                    </a>
+                                </h2>
+                                <div id="collapse29" class="accordion-collapse collapse" aria-labelledby="heading29"
+                                    data-bs-parent="#accordionFaq4">
+                                    <div class="accordion-body">
+                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change
+                                            your shipping address. If your order has already shipped, we may not be able
+                                            to change the address.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

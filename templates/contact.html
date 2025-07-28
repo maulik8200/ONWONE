@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+
+<div class="page-content">
+			<!--banner-->
+			<section class="bg-light content-inner-1 m-t70 contact-us2 overflow-hidden">
+				<div class="container">
+					<div class="row">
+						<div class="map-fixed">
+							<div class="contact-map">
+								<img src="images/map/map.png" alt="/">
+								<nav>
+									<div class="map-point nav" id="nav-tab" role="tablist">
+										<a href="error-1.html" class="point point-1 active" id="nav-tab1" data-bs-toggle="tab" data-bs-target="#nav-tab-1" role="tab" aria-selected="true">
+										</a>
+										<a href="error-1.html" class="point point-2" id="nav-tab2" data-bs-toggle="tab" data-bs-target="#nav-tab-2" role="tab" aria-selected="false">
+										</a>
+										<a href="error-1.html" class="point point-3" id="nav-tab3" data-bs-toggle="tab" data-bs-target="#nav-tab-3" role="tab" aria-selected="false">
+										</a>
+									</div>
+								</nav>
+							</div>
+							<div class="dz-text wow fadeInUp" data-wow-delay="0.5s">Contact Us</div>
+						</div>
+						<div class="col-xl-5 col-md-7">
+							<div class="tab-content" id="nav-tabContent">
+								<div class="tab-pane fade show active" id="nav-tab-1" role="tabpanel" aria-labelledby="nav-tab1" tabindex="0">
+									<div class="contact-info style-1 text-start text-white">
+										<h2 class="title wow fadeInUp" data-wow-delay="0.1s">United States</h2>
+										<p class="text wow fadeInUp" data-wow-delay="0.2s"><span>Address:</span> 3553 Brandywine Street Northwest, Washington AR 20008</p>
+										<div class="contact-bottom wow fadeInUp justify-content-between" data-wow-delay="0.3s">
+											<div class="contact-left">
+												<h3>Call Us</h3>
+												<ul>
+													<li>+01-123-456-7890</li>
+													<li>+01-123-456-7890</li>
+												</ul>
+											</div>
+											<div class="contact-right">
+												<h3>Email Us</h3>
+												<ul>
+													<li>help@Pixio.com</li>
+												</ul>
+											</div>		
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="nav-tab-2" role="tabpanel" aria-labelledby="nav-tab2" tabindex="0">
+									<div class="contact-info style-1 text-start text-white">
+										<h2 class="title wow fadeInUp" data-wow-delay="0.1s">South Africa</h2>
+										<p class="text wow fadeInUp" data-wow-delay="0.2s"><span>Address:</span> 552 Church St</p>
+										<div class="contact-bottom wow fadeInUp justify-content-between" data-wow-delay="0.3s">
+											<div class="contact-left">
+												<h3>Call Us</h3>
+												<ul>
+													<li>+01-123-456-7890</li>
+													<li>+01-123-456-7890</li>
+												</ul>
+											</div>
+											<div class="contact-right">
+												<h3>Email Us</h3>
+												<ul>
+													<li>help@Pixio.com</li>
+												</ul>
+											</div>		
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="nav-tab-3" role="tabpanel" aria-labelledby="nav-tab3" tabindex="0">
+									<div class="contact-info style-1 text-start text-white">
+										<h2 class="title wow fadeInUp" data-wow-delay="0.1s">Russia</h2>
+										<p class="text wow fadeInUp" data-wow-delay="0.2s"><span>Address:</span> Ryabikova B-R, bld. 20/А, appt. 151</p>
+										<div class="contact-bottom wow fadeInUp justify-content-between" data-wow-delay="0.3s">
+											<div class="contact-left">
+												<h3>Call Us</h3>
+												<ul>
+													<li>+01-123-456-7890</li>
+													<li>+01-123-456-7890</li>
+												</ul>
+											</div>
+											<div class="contact-right">
+												<h3>Email Us</h3>
+												<ul>
+													<li>help@Pixio.com</li>
+												</ul>
+											</div>		
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="contact-area1 wow fadeInUp" data-wow-delay="0.4s">
+								
+								<form class="dz-form dzForm" method="POST" action="script/contact_smtp.php">
+									<input type="hidden" class="form-control" name="dzToDo" value="Contact">
+									<input type="hidden" class="form-control" name="reCaptchaEnable" value="0">
+									<div class="dzFormMsg"></div>
+									<label class="form-label">Your Name</label>
+									<div class="input-group">
+										<input required="" type="text" class="form-control" name="dzName">
+									</div>
+									<label class="form-label">Email Address</label>
+									<div class="input-group">
+										<input required="" type="text" class="form-control" name="dzEmail">
+									</div>
+									<label class="form-label">Phone Number</label>
+									<div class="input-group">
+										<input required="" type="text" class="form-control" name="dzPhoneNumber">
+									</div>
+									<label class="form-label">Message</label>
+									<div class="input-group">
+										<textarea name="dzMessage" rows="4" required="" class="form-control"></textarea>
+									</div>
+									<div class="input-recaptcha m-b30">
+										<div class="g-recaptcha" data-sitekey="6LefsVUUAAAAADBPsLZzsNnETChealv6PYGzv3ZN" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+										<input class="form-control d-none" style="display:none;" data-recaptcha="true" required="" data-error="Please complete the Captcha">
+									</div>
+									<div>
+										<button name="submit" type="submit" value="submit" class="btn w-100 btn-white btnhover">SUBMIT</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+
+
+
+{% endblock %}
