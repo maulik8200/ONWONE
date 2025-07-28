@@ -21,6 +21,8 @@ urlpatterns = [
 
     path('login/', login, name='login'),
     path('register/', register, name='register'),
+    path('account/', account, name='account'),
+    path('account-billing-address/', account_billing_address, name='account-billing-address'),
 ]
 
 if settings.DEBUG:

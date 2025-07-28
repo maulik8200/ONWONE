@@ -237,3 +237,10 @@ def register(request):
                 return render(request, 'register.html', {'otp_required': True})
 
     return render(request, 'register.html')
+
+
+def account(request):
+    return render(request, 'account.html')
+
+def account_billing_address(request):
+    return render(request, 'account_billing_address.html')
