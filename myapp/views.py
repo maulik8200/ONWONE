@@ -21,8 +21,16 @@ from .models import *
 
 
 def home(request):
-    slider_items = SliderItem.objects.all
-    return render(request, 'index.html', {'slider_items': slider_items})
+    slider_items = SliderItem.objects.all()
+    trending_products = Product.objects.filter(trending_now=True)
+    popular_products = Product.objects.filter(Most_popular_products=True)
+
+    context = {
+        'slider_items': slider_items,
+        'trending_products': trending_products,
+        'popular_products': popular_products,
+    }
+    return render(request, 'index.html', context)
 
 def shop(request):
     shop_banners = ShopBanner.objects.all()
@@ -45,9 +53,13 @@ def shop(request):
         product_list = product_list.filter(categories__name=category_filter)
     if tag_filter:
         product_list = product_list.filter(tags__name=tag_filter)
+
+    # Price filtering using discount_price
     if min_price and max_price:
         try:
-            product_list = product_list.filter(price__gte=float(min_price), price__lte=float(max_price))
+            product_list = product_list.filter(
+                Q(discount_price__gte=float(min_price), discount_price__lte=float(max_price))
+            )
         except ValueError:
             pass
 
@@ -57,7 +69,11 @@ def shop(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    price_range = Product.objects.aggregate(min_price=Min('price'), max_price=Max('price'))
+    # Calculate min/max from discount_price (fallback to price if null)
+    price_range = Product.objects.aggregate(
+        min_price=Min('discount_price'),
+        max_price=Max('discount_price')
+    )
     min_db_price = int(price_range['min_price'] or 0)
     max_db_price = int(price_range['max_price'] or 1000)
 

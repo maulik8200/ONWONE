@@ -81,8 +81,8 @@ class ProductDescriptionBox(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=255)
     title2 = models.CharField(max_length=255, blank=True, null=True)
-    mini_description = models.TextField(max_length=300)
-    description = models.TextField()
+    mini_description = models.TextField(blank=True)
+    description = models.TextField(blank=True)
 
     price = models.DecimalField(max_digits=10, decimal_places=2)
     discount_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
@@ -98,18 +98,19 @@ class Product(models.Model):
     images = models.ManyToManyField(ProductImage, related_name='products', blank=True)
     ProductDescriptionBoxes = models.ManyToManyField('ProductDescriptionBox', blank=True, related_name='products')
 
-    manufacturer = models.CharField(max_length=255)
-    country_of_origin = models.CharField(max_length=100)
-    department = models.CharField(max_length=100)
-    included_components = models.CharField(max_length=255)
-    dimensions = models.CharField(max_length=100)
-    brand = models.CharField(max_length=255)
+    manufacturer = models.CharField(max_length=255, blank=True)
+    country_of_origin = models.CharField(max_length=100, blank=True)
+    department = models.CharField(max_length=100, blank=True)
+    included_components = models.CharField(max_length=255, blank=True)
+    dimensions = models.CharField(max_length=100, blank=True)
+    brand = models.CharField(max_length=255, blank=True)
 
     def delete(self, *args, **kwargs):
         # Delete all related images
         for image in self.images.all():
             image.delete()
         super().delete(*args, **kwargs)
+
 
 
 class BillingAddress(models.Model):

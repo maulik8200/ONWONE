@@ -65,12 +65,6 @@
 					d="M41 0L45.277 39.592L81.7032 23.5L49.554 47L81.7032 70.5L45.277 54.408L41 94L36.723 54.408L0.296806 70.5L32.446 47L0.296806 23.5L36.723 39.592L41 0Z"
 					fill="black"></path>
 			</svg>
-			<a class="animation-btn popup-youtube" href="https://www.youtube.com/watch?v=YwYoyQ1JdpQ">
-				<div class="text-row word-rotate-box c-black">
-					<span class="word-rotate"> More Collection Explore </span>
-					<i class="fa-solid fa-play text-dark badge__emoji"></i>
-				</div>
-			</a>
 		</div>
 	</div>
 
@@ -91,7 +85,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-12">
+				<!-- <div class="col-lg-6 col-md-12">
 					<div class="site-filters clearfix style-1 align-items-center wow fadeInUp ms-lg-auto"
 						data-wow-delay="0.4s"
 						style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
@@ -118,22 +112,21 @@
 							</li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<div class="clearfix">
-				<ul id="masonry" class="row g-xl-4 g-3" style="position: relative; height: 948.75px;">
-					<li class="card-container col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6 Tops wow fadeInUp"
-						data-wow-delay="0.6s"
-						style="position: absolute; left: 0px; top: 0px; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+				<ul id="masonry" class="row g-xl-4 g-3">
+					{% for product in trending_products %}
+					<li class="card-container col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6 Tops wow fadeInUp" data-wow-delay="0.6s">
 						<div class="shop-card">
 							<div class="dz-media">
-								<img src="https://pixio.dexignzone.com/xhtml/images/shop/product/2.png" alt="image">
+								{% if product.images.first %}
+								<img src="{{ product.images.first.image.url }}" alt="{{ product.title }}">
+								{% else %}
+								<img src="{% static 'path/to/default-image.jpg' %}" alt="No image available">
+								{% endif %}
+
 								<div class="shop-meta">
-									<a href="javascript:void(0);" class="btn btn-secondary btn-md btn-rounded"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="fa-solid fa-eye d-md-none d-block"></i>
-										<span class="d-md-block d-none">Quick View</span>
-									</a>
 									<div class="btn btn-primary meta-icon dz-wishicon">
 										<i class="icon feather icon-heart dz-heart"></i>
 										<i class="icon feather icon-heart-on dz-heart-fill"></i>
@@ -144,15 +137,21 @@
 									</div>
 								</div>
 							</div>
+
 							<div class="dz-content">
-								<h5 class="title"><a href="shop-list.html">Cozy Knit Cardigan Sweater</a></h5>
-								<h5 class="price">$80</h5>
-							</div>
-							<div class="product-tag">
-								<span class="badge ">Get 20% Off</span>
+								<h5 class="title"><a href="{% url 'product_detail' product.id %}">{{ product.title }}</a></h5>
+								<h5 class="price">
+									{% if product.discount_price %}
+										<span class="text-muted text-decoration-line-through">${{ product.price }}</span>
+										${{ product.discount_price }}
+									{% else %}
+										${{ product.price }}
+									{% endif %}
+								</h5>
 							</div>
 						</div>
 					</li>
+					{% endfor %}
 				</ul>
 			</div>
 		</div>
@@ -169,7 +168,7 @@
 	<!-- video start -->
 	<section class="video-section">
 		<div class="video-wrapper bg-parallax"
-			style="background-image: url(&quot;images/background/bg2.jpg&quot;); background-position-y: 52px;">
+			style="background-image: url(&quot;https://pixio.dexignzone.com/xhtml/images/background/bg2.jpg&quot;); background-position-y: 52px;">
 			<div class="container">
 				<div class="d-flex justify-content-center">
 					<a class="icon-button popup-youtube" href="https://www.youtube.com/watch?v=YwYoyQ1JdpQ">
@@ -345,7 +344,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-12">
+				<!-- <div class="col-lg-6 col-md-12">
 					<div class="site-filters clearfix style-1 align-items-center wow fadeInUp ms-lg-auto"
 						data-wow-delay="0.4s"
 						style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
@@ -372,22 +371,22 @@
 							</li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
+				
 			</div>
 			<div class="clearfix">
-				<ul id="masonry" class="row g-xl-4 g-3" style="position: relative; height: 948.75px;">
-					<li class="card-container col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6 Tops wow fadeInUp"
-						data-wow-delay="0.6s"
-						style="position: absolute; left: 0px; top: 0px; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+				<ul id="masonry" class="row g-xl-4 g-3">
+					{% for product in popular_products %}
+					<li class="card-container col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6 Tops wow fadeInUp" data-wow-delay="0.6s">
 						<div class="shop-card">
 							<div class="dz-media">
-								<img src="https://pixio.dexignzone.com/xhtml/images/shop/product/2.png" alt="image">
+								{% if product.images.first %}
+								<img src="{{ product.images.first.image.url }}" alt="{{ product.title }}">
+								{% else %}
+								<img src="{% static 'path/to/default-image.jpg' %}" alt="No image available">
+								{% endif %}
+
 								<div class="shop-meta">
-									<a href="javascript:void(0);" class="btn btn-secondary btn-md btn-rounded"
-										data-bs-toggle="modal" data-bs-target="#exampleModal">
-										<i class="fa-solid fa-eye d-md-none d-block"></i>
-										<span class="d-md-block d-none">Quick View</span>
-									</a>
 									<div class="btn btn-primary meta-icon dz-wishicon">
 										<i class="icon feather icon-heart dz-heart"></i>
 										<i class="icon feather icon-heart-on dz-heart-fill"></i>
@@ -398,17 +397,26 @@
 									</div>
 								</div>
 							</div>
+
 							<div class="dz-content">
-								<h5 class="title"><a href="shop-list.html">Cozy Knit Cardigan Sweater</a></h5>
-								<h5 class="price">$80</h5>
+								<h5 class="title"><a href="{% url 'product_detail' product.id %}">{{ product.title }}</a></h5>
+								<h5 class="price">
+									{% if product.discount_price %}
+										<span class="text-muted text-decoration-line-through">${{ product.price }}</span>
+										${{ product.discount_price }}
+									{% else %}
+										${{ product.price }}
+									{% endif %}
+								</h5>
 							</div>
-							<div class="product-tag">
-								<span class="badge ">Get 20% Off</span>
-							</div>
+
 						</div>
 					</li>
+					{% endfor %}
 				</ul>
 			</div>
+
+
 		</div>
 	</section>
 	<!-- Trending Products end -->
