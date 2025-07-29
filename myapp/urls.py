@@ -21,10 +21,13 @@ urlpatterns = [
 
     path('login/', login, name='login'),
     path('register/', register, name='register'),
+    
     path('account/', account, name='account'),
     path('account-billing-address/', account_billing_address, name='account-billing-address'),
     path('edit-billing-address/', edit_billing_address, name='edit_billing_address'),
     path('remove-billing-address/', remove_billing_address, name='remove_billing_address'),
+
+    path('upload-excel/', upload_products_excel, name='upload_products_excel'),
 ]
 
 if settings.DEBUG:

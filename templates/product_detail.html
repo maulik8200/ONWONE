@@ -102,19 +102,26 @@
                                     </span>
 								</div>
 								<div class="product-num gap-md-2 gap-xl-0">
-									<div class="btn-quantity light">
+									<!-- Quantity Dropdown -->
+									<div class="form-group">
 										<label class="form-label">Quantity</label>
-										<input type="text" value="1" name="demo_vertical2" min="1" max="4" step="1" oninput="validity.valid||(value='1')">
+										<select class="form-select" name="quantity">
+											{% for i in "1234" %}
+												<option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+											{% endfor %}
+										</select>
 									</div>
-									<div class="d-block">
+
+									<!-- Size Dropdown -->
+									<div class="form-group">
 										<label class="form-label">Size</label>
-										<div class="btn-group product-size m-0">
-                                            {% for size in product.sizes.all %}
-                                                <input type="radio" class="btn-check" name="btnradio1" id="btnradio{{ forloop.counter }}">
-                                                <label class="btn" for="btnradio{{ forloop.counter }}">{{ size.name }}</label>
-                                            {% endfor %}
-                                        </div>
+										<select class="form-select" name="size">
+											{% for size in product.sizes.all %}
+												<option value="{{ size.id }}">{{ size.name }}</option>
+											{% endfor %}
+										</select>
 									</div>
+
 									<div class="meta-content">
 										<label class="form-label">Color</label>
 										<div class="d-flex align-items-center color-filter">

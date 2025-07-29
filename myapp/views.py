@@ -6,8 +6,14 @@ from django.http import HttpResponseBadRequest
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
+from django.core.files.base import ContentFile
+from urllib.parse import urlparse
+
 
 import random
+import pandas as pd
+import requests
+
 
 from .models import *
 
@@ -319,3 +325,110 @@ def remove_billing_address(request):
     except:
         pass
     return redirect('account')
+
+# Define size sequence to support "S to 5XL"
+SIZE_ORDER = ['S', 'M', 'L', 'XL', 'XXL', '3XL', '4XL', '5XL']
+
+def parse_size_range(size_value):
+    sizes = []
+    size_value = str(size_value).replace(" ", "").upper()  # normalize
+    if 'TO' in size_value:
+        try:
+            start, end = size_value.split('TO')
+            start_index = SIZE_ORDER.index(start)
+            end_index = SIZE_ORDER.index(end)
+            if start_index <= end_index:
+                sizes = SIZE_ORDER[start_index:end_index + 1]
+        except Exception as e:
+            print(f"Size range parse error: {e}")
+    else:
+        sizes = [s.strip() for s in size_value.split(',') if s.strip() in SIZE_ORDER]
+    return sizes
+
+
+def upload_products_excel(request):
+    if request.method == 'POST' and request.FILES.get('excel_file'):
+        excel_file = request.FILES['excel_file']
+        df = pd.read_excel(excel_file)
+
+        for _, row in df.iterrows():
+            try:
+                product, created = Product.objects.get_or_create(
+                    sku=row['Sku Id'],
+                    defaults={
+                        'title': row['Name'],
+                        'price': row['MRP'],
+                        'discount_price': row['Selling Price'],
+                        'description': row['Description'],
+                        'mini_description': row['Description'],
+                        'in_stock': row['Quantity'] > 0,
+                        'manufacturer': '',
+                        'country_of_origin': '',
+                        'department': '',
+                        'included_components': '',
+                        'dimensions': f"{row['Packaging Length (in cm)']}x{row['Packaging Breadth (in cm)']}x{row['Packaging Height (in cm)']}",
+                        'brand': '',
+                    }
+                )
+
+                # Sizes (including "S to 5XL")
+                if pd.notna(row['Size']):
+                    parsed_sizes = parse_size_range(row['Size'])
+                    for size_name in parsed_sizes:
+                        size_obj, _ = Size.objects.get_or_create(name=size_name)
+                        product.sizes.add(size_obj)
+
+                # Colors
+                if pd.notna(row['Colour']):
+                    for color_name in str(row['Colour']).split(','):
+                        color_obj, _ = Color.objects.get_or_create(name=color_name.strip(), defaults={'hex_code': '#000000'})
+                        product.colors.add(color_obj)
+
+                # Categories
+                if pd.notna(row['Product Type']):
+                    for cat_name in str(row['Product Type']).split(','):
+                        cat_obj, _ = Category.objects.get_or_create(name=cat_name.strip())
+                        product.categories.add(cat_obj)
+
+                # Tags
+                if pd.notna(row['attr1_Attribute Name']):
+                    for tag_name in str(row['attr1_Attribute Name']).split(','):
+                        tag_obj, _ = Tag.objects.get_or_create(name=tag_name.strip())
+                        product.tags.add(tag_obj)
+
+                # Product Images (download and save)
+                for i in range(1, 11):
+                    col_name = f'Image {i}'
+                    if pd.notna(row.get(col_name)):
+                        image_url = row[col_name]
+                        try:
+                            response = requests.get(image_url, timeout=10)
+                            if response.status_code == 200:
+                                image_name = os.path.basename(urlparse(image_url).path)
+                                image_file = ContentFile(response.content, name=image_name)
+
+                                product_image = ProductImage()
+                                product_image.image.save(image_name, image_file)
+                                product_image.alt_text = product.title
+                                product_image.save()
+
+                                product.images.add(product_image)
+                        except Exception as e:
+                            print(f"Failed to download image from {image_url}: {e}")
+
+                # Description Box
+                if pd.notna(row['Description']):
+                    pdbox, _ = ProductDescriptionBox.objects.get_or_create(
+                        title="Overview",
+                        description=row['Description'][:250]
+                    )
+                    product.ProductDescriptionBoxes.add(pdbox)
+
+                product.save()
+
+            except Exception as e:
+                print(f"Error processing row {row.get('Sku Id', 'N/A')}: {e}")
+
+        return redirect('upload_products_excel')
+
+    return render(request, 'upload_excel.html')

@@ -47,7 +47,8 @@
     <!-- STYLESHEETS -->
     <link rel="stylesheet" type="text/css" href="{% static 'icons/iconly/index.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/magnific-popup/magnific-popup.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/nouislider/nouislider.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
@@ -68,7 +69,7 @@
 
 <body id="bg">
 
-        <!-- <div id="loading-area" class="preloader-wrapper-4">
+    <!-- <div id="loading-area" class="preloader-wrapper-4">
             <img src="images/loading.gif" alt="">
         </div> -->
 
@@ -92,158 +93,107 @@
 
 
 
-        <!-- Header -->
-        <header class="site-header mo-left header style-2">
 
-            <!-- Main Header -->
-            <div class="header-info-bar">
-                <div class="container clearfix">
+
+    <!-- Header Star -->
+    <header class="site-header mo-left header style-1 header-transparent">
+        <!-- Main Header -->
+        <div class="sticky-header main-bar-wraper navbar-expand-lg">
+            <div class="main-bar clearfix">
+                <div class="container-fluid clearfix d-lg-flex d-block">
 
                     <!-- Website Logo -->
-                    <div class="logo-header logo-dark">
+                    <div class="logo-header logo-dark me-md-5">
                         <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt="logo"></a>
                     </div>
 
-                    <!-- EXTRA NAV -->
-                    <div class="extra-nav d-md-flex d-none">
-                        <div class="extra-cell">
-                            <ul class="navbar-nav header-right m-0">
-                                <li class="nav-item info-box ">
-                                    <div class="nav-link">
-                                        <div class="info-content">
-                                            {% if user.is_authenticated %}
-                                                <a href="{% url 'account' %}">Account</a>
-                                            {% else %}
-                                                <a href="{% url 'login' %}">Login</a>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <!-- Nav Toggle Button -->
+                    <button class="navbar-toggler collapsed navicon justify-content-end" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
 
-                    <!-- header search nav -->
-                    <div class="header-search-nav">
-                        <form class="header-item-search">
-                            <div class="input-group search-input">
-                                <select class="default-select">
-                                    <option>All Categories</option>
-                                    <option>Photography </option>
-                                </select>
-                                <input type="text" class="form-control" aria-label="Text input with dropdown button"
-                                    placeholder="Search for products">
-                                <button class="btn" type="button">
-                                    <i class="iconly-Light-Search"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-            <!-- Main Header End -->
-
-            <!-- Main Header -->
-            <div class="sticky-header main-bar-wraper navbar-expand-lg">
-                <div class="main-bar clearfix">
-                    <div class="container clearfix d-lg-flex d-block">
-
-                        <!-- Website Logo -->
+                    <!-- Main Nav -->
+                    <div class="header-nav w3menu navbar-collapse collapse justify-content-start"
+                        id="navbarNavDropdown">
                         <div class="logo-header logo-dark">
-                            <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt="logo"></a>
+                            <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt=""></a>
                         </div>
+                        <ul class="nav navbar-nav">
+                            <li class="has-mega-menu sub-menu-down auto-width menu-left">
+                                <a href="{% url 'home' %}"><span>Home</span><i
+                                        class="fas fa-chevron-down tabindex"></i></a>
+                            </li>
+                            <li class="has-mega-menu sub-menu-down">
+                                <a href="{% url 'shop' %}"><span>Shop</span><i
+                                        class="fas fa-chevron-down tabindex"></i></a>
+                            </li>
+                            <li class="has-mega-menu sub-menu-down auto-width">
+                                <a href="{% url 'about' %}"><span>About US</span><i
+                                        class="fas fa-chevron-down tabindex"></i></a>
+                            </li>
+                            <li class="has-mega-menu sub-menu-down auto-width">
+                                <a href="{% url 'faq' %}"><span>FAQ</span><i
+                                        class="fas fa-chevron-down tabindex"></i></a>
+                            </li>
+                            <li class="has-mega-menu sub-menu-down">
+                                <a href="{% url 'contact' %}"><span>Contact US</span><i
+                                        class="fas fa-chevron-down tabindex"></i></a>
+                            </li>
+                        </ul>
+                        <div class="dz-social-icon">
+                            <ul>
+                                <li><a class="fab fa-facebook-f" target="_blank"
+                                        href="https://www.facebook.com"></a></li>
+                                <li><a class="fab fa-twitter" target="_blank"
+                                        href="https://twitter.com"></a></li>
+                                <li><a class="fab fa-linkedin-in" target="_blank"
+                                        href="https://www.linkedin.com"></a></li>
+                                <li><a class="fab fa-instagram" target="_blank"
+                                        href="https://www.instagram.com"></a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-                        <!-- Nav Toggle Button -->
-                        <button class="navbar-toggler collapsed navicon justify-content-end" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-
-                        <!-- Main Nav -->
-                        <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
-                            <div class="logo-header">
-                                <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt=""></a>
-                            </div>
-                            <ul class="nav navbar-nav">
-                                <li class="has-mega-menu sub-menu-down">
-                                    <a href="{% url 'home' %}"><span>Home</span><i
-                                            class="fas fa-chevron-down tabindex"></i></a>
+                    <!-- EXTRA NAV -->
+                    <div class="extra-nav">
+                        <div class="extra-cell">
+                            <ul class="header-right">
+                                <li class="nav-item login-link">
+                                    {% if user.is_authenticated %}
+                                    <a class="nav-link" href="{% url 'account' %}">
+                                        Account
+                                    </a>
+                                    {% else %}
+                                    <a class="nav-link" href="{% url 'login' %}">
+                                        Login
+                                    </a>
+                                    {% endif %}
                                 </li>
-                                <li class="has-mega-menu sub-menu-down">
-                                    <a href="{% url 'shop' %}"><span>Shop</span><i
-                                            class="fas fa-chevron-down tabindex"></i></a>
-                                    <div class="mega-menu shop-menu">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="row">
-                                                    {% for category, tags in category_tag_map.items %}
-                                                        <div class="col-md-4 col-6">
-                                                            <a href="{% url 'shop' %}?category={{ category.name|urlencode }}" class="menu-title">{{ category.name }}</a>
-                                                            <ul>
-                                                                {% for tag in tags %}
-                                                                    <li>
-                                                                        <a href="{% url 'shop' %}?category={{ category.name|urlencode }}&tag={{ tag.name|urlencode }}">
-                                                                            {{ tag.name }}
-                                                                        </a>
-                                                                    </li>
-                                                                {% endfor %}
-                                                            </ul>
-                                                        </div>
-                                                    {% endfor %}
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                <li class="nav-item wishlist-link">
+                                    <a class="nav-link" href="{% url 'wishlist' %}">
+                                        <i class="iconly-Light-Heart2"></i>
+                                    </a>
                                 </li>
-                                <li class="has-mega-menu sub-menu-down">
-                                    <a href="{% url 'about' %}"><span>About US</span><i
-                                            class="fas fa-chevron-down tabindex"></i></a>
-                                </li>
-                                <li class="has-mega-menu sub-menu-down">
-                                    <a href="{% url 'faq' %}"><span>FAQ</span><i
-                                            class="fas fa-chevron-down tabindex"></i></a>
-                                </li>
-                                <li class="has-mega-menu sub-menu-down">
-                                    <a href="{% url 'contact' %}"><span>Contact US</span><i
-                                            class="fas fa-chevron-down tabindex"></i></a>
+                                <li class="nav-item cart-link">
+                                    <a href="{% url 'cart' %}" class="nav-link cart-btn">
+                                        <i class="iconly-Broken-Buy"></i>
+                                        <span class="badge badge-circle">5</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
-
-                        <!-- EXTRA NAV -->
-                        <div class="extra-nav">
-                            <div class="extra-cell">
-                                <ul class="header-right">
-                                    <li class="nav-item wishlist-link">
-                                        <a class="nav-link" href="{% url 'wishlist' %}" aria-controls="offcanvasRight">
-                                            <i class="iconly-Light-Heart2"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item cart-link">
-                                        <a href="{% url 'cart' %}" class="nav-link cart-btn"
-                                            aria-controls="offcanvasRight">
-                                            <i class="iconly-Broken-Buy"></i>
-                                            <span class="badge badge-circle">5</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
                     </div>
+
                 </div>
             </div>
-            <!-- Main Header End -->
+        </div>
 
-        </header>
-        <!-- Header End -->
-
-
+    </header>
+    <!-- Header End -->
 
 
 
@@ -267,9 +217,11 @@
 
 
 
-        {% block content %}
-        <!-- Content will be inserted here -->
-        {% endblock %}
+
+
+    {% block content %}
+    <!-- Content will be inserted here -->
+    {% endblock %}
 
 
 
@@ -293,63 +245,64 @@
 
 
 
-        <footer class="site-footer  bg-light">
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="widget widget_about me-2 text-center">
-                                <div class="footer-logo logo-white">
-                                    <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt=""></a>
-                                </div>
+    <footer class="site-footer  bg-light">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="widget widget_about me-2 text-center">
+                            <div class="footer-logo logo-white">
+                                <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg"
+                                        alt=""></a>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="widget widget_services text-center">
-                                <ul class="nav-inline mb-3 text">
-                                    <li><a href="{% url 'about' %}">About Us</a></li>
-                                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
-                                </ul>
-                                <ul class="nav-inline">
-                                    <li><a href="javascript:void();" target="_blank"
-                                            class="site-button-link facebook hover"><i
-                                                class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="javascript:void();" target="_blank"
-                                            class="site-button-link google-plus hover"><i
-                                                class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="javascript:void();" target="_blank"
-                                            class="site-button-link linkedin hover"><i
-                                                class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="javascript:void();" target="_blank"
-                                            class="site-button-link instagram hover"><i
-                                                class="fab fa-instagram"></i></a></li>
-                                    <li><a href="javascript:void();" target="_blank"
-                                            class="site-button-link twitter hover"><i class="fab fa-twitter"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="widget widget_services text-center">
+                            <ul class="nav-inline mb-3 text">
+                                <li><a href="{% url 'about' %}">About Us</a></li>
+                                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                            </ul>
+                            <ul class="nav-inline">
+                                <li><a href="javascript:void();" target="_blank"
+                                        class="site-button-link facebook hover"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li><a href="javascript:void();" target="_blank"
+                                        class="site-button-link google-plus hover"><i
+                                            class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="javascript:void();" target="_blank"
+                                        class="site-button-link linkedin hover"><i class="fab fa-linkedin-in"></i></a>
+                                </li>
+                                <li><a href="javascript:void();" target="_blank"
+                                        class="site-button-link instagram hover"><i class="fab fa-instagram"></i></a>
+                                </li>
+                                <li><a href="javascript:void();" target="_blank"
+                                        class="site-button-link twitter hover"><i class="fab fa-twitter"></i></a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <div class="container">
-                    <div class="row fb-inner">
-                        <div class="col-lg-6 col-md-12 text-start">
-                            <p class="copyright-text">© <span class="current-year">2024</span> <a
-                                    href="https://www.Onowne.com/">Onowne</a> Theme. All Rights Reserved.</p>
-                        </div>
-                        <div class="col-lg-6 col-md-12 text-end">
-                            <div
-                                class="d-flex align-items-center justify-content-center justify-content-md-center justify-content-lg-end">
-                                <span class="me-3">We Accept: </span>
-                                <img src="https://pixio.dexignzone.com/xhtml/images/footer-img.png" alt="">
-                            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row fb-inner">
+                    <div class="col-lg-6 col-md-12 text-start">
+                        <p class="copyright-text">© <span class="current-year">2024</span> <a
+                                href="https://www.Onowne.com/">Onowne</a> Theme. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-6 col-md-12 text-end">
+                        <div
+                            class="d-flex align-items-center justify-content-center justify-content-md-center justify-content-lg-end">
+                            <span class="me-3">We Accept: </span>
+                            <img src="https://pixio.dexignzone.com/xhtml/images/footer-img.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
 
 
@@ -396,7 +349,7 @@
 
 
 
-        <button class="scroltop" type="button"><i class="fas fa-arrow-up"></i></button>
+    <button class="scroltop" type="button"><i class="fas fa-arrow-up"></i></button>
 
 
     </div>

@@ -63,6 +63,12 @@ class ProductImage(models.Model):
     alt_text = models.CharField(max_length=255, blank=True)
     def __str__(self): 
         return self.alt_text or f"Image {self.id}"
+    
+    def delete(self, *args, **kwargs):
+        # Delete the image file from storage before deleting the model instance
+        if self.image and os.path.isfile(self.image.path):
+            os.remove(self.image.path)
+        super().delete(*args, **kwargs)
 
 class ProductDescriptionBox(models.Model):
     title = models.CharField(max_length=255)
@@ -82,11 +88,13 @@ class Product(models.Model):
     discount_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     sku = models.CharField(max_length=100, unique=True)
     in_stock = models.BooleanField(default=True)
+    trending_now = models.BooleanField(default=False)
+    Most_popular_products = models.BooleanField(default=False)
 
     sizes = models.ManyToManyField(Size, blank=True)
     colors = models.ManyToManyField(Color, blank=True)
     categories = models.ManyToManyField(Category, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True) 
     images = models.ManyToManyField(ProductImage, related_name='products', blank=True)
     ProductDescriptionBoxes = models.ManyToManyField('ProductDescriptionBox', blank=True, related_name='products')
 
