@@ -272,3 +272,50 @@ def account_billing_address(request):
         return redirect('account')  # redirect after save
 
     return render(request, 'account_billing_address.html')
+
+
+
+def edit_billing_address(request):
+    try:
+        billing_address = request.user.billing_address
+    except BillingAddress.DoesNotExist:
+        billing_address = None
+
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        company_name = request.POST.get('company_name')
+        country = request.POST.get('country')
+        street_address_1 = request.POST.get('street_address_1')
+        street_address_2 = request.POST.get('street_address_2')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
+        postcode = request.POST.get('postcode')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+
+
+        billing_address.first_name = first_name
+        billing_address.company_name = company_name
+        billing_address.country = country
+        billing_address.street_address_1 = street_address_1
+        billing_address.street_address_2 = street_address_2
+        billing_address.city = city
+        billing_address.state = state
+        billing_address.postcode = postcode
+        billing_address.phone = phone
+        billing_address.email = email
+        billing_address.save()
+
+        return redirect('account')
+
+    return render(request, 'edit_billing_address.html', {'billing_address': billing_address})
+
+
+
+def remove_billing_address(request):
+    try:
+        billing_address = request.user.billing_address
+        billing_address.delete()
+    except:
+        pass
+    return redirect('account')

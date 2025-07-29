@@ -27,10 +27,10 @@ class ProductAdmin(admin.ModelAdmin):
     filter_horizontal = ('sizes', 'colors', 'categories', 'tags', 'images', 'ProductDescriptionBoxes')
 
 # Register other models as usual
-admin.site.register(ProductImage)
-admin.site.register(Category)
-admin.site.register(Tag)
-admin.site.register(Size)
-admin.site.register(Color)
-admin.site.register(ProductDescriptionBox)
+# admin.site.register(ProductImage)
+# admin.site.register(Category)
+# admin.site.register(Tag)
+# admin.site.register(Size)
+# admin.site.register(Color)
+# admin.site.register(ProductDescriptionBox)
 admin.site.register(BillingAddress)

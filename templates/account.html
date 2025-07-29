@@ -38,23 +38,24 @@
                     <div class="col-md-6 m-b30">
                         <div class="address-card">
                             <div class="account-address-box">
-                                <h6 class="mb-3">Billing address</h6>
                                 {% if billing_address %}
                                 <ul>
-                                    <li>{{ billing_address.first_name }}</li>
-                                    <li>{{ billing_address.city }}</li>
+                                    <h6>{{ billing_address.first_name }}</h6>
                                     <li>Mo. {{ billing_address.phone }}</li>
-                                    <li>{{ billing_address.email }}</li>
+                                    <li>{{ billing_address.street_address_1 }}</li>
+                                    <li>{{ billing_address.city }}, {{ billing_address.state }},
+                                        {{ billing_address.country }}</li>
                                 </ul>
                                 {% else %}
                                 <p>No billing address saved yet.</p>
                                 {% endif %}
                             </div>
                             <div class="account-address-bottom">
-                                <a href="" class="d-block me-3">
+                                <a href="{% url 'edit_billing_address' %}" class="d-block me-3">
                                     <i class="fa-solid fa-pen me-2"></i>Edit
                                 </a>
-                                <a href="" class="d-block me-3">
+                                <a href="{% url 'remove_billing_address' %}" class="d-block me-3"
+                                    onclick="return confirm('Are you sure you want to remove your billing address?');">
                                     <i class="fa-solid fa-trash-can me-2"></i>Remove
                                 </a>
                             </div>

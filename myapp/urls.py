@@ -23,6 +23,8 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('account/', account, name='account'),
     path('account-billing-address/', account_billing_address, name='account-billing-address'),
+    path('edit-billing-address/', edit_billing_address, name='edit_billing_address'),
+    path('remove-billing-address/', remove_billing_address, name='remove_billing_address'),
 ]
 
 if settings.DEBUG:
