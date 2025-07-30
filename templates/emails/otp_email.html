@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onwone OTP Verification</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body style="margin: 0; font-family: 'Poppins', sans-serif; background: #ffffff; font-size: 14px;">
+  <div style="max-width: 680px; margin: 0 auto; padding: 45px 30px 60px; background: #fffbea; background-image: url('https://www.transparenttextures.com/patterns/cream-dust.png'); background-repeat: repeat; font-size: 14px; color: #434343;">
+    
+    <!-- Header -->
+    <header>
+      <table style="width: 100%;">
+        <tbody>
+          <tr>
+            <td>
+              <img alt="Onwone Logo" src="https://dummyimage.com/140x40/ffd700/000000&text=Onwone" height="30px" />
+            </td>
+            <td style="text-align: right;">
+              <span style="font-size: 16px; line-height: 30px; color: #1a1a1a;">{{ date }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+      <div style="margin-top: 70px; padding: 92px 30px 115px; background: #ffffff; border-radius: 30px; text-align: center;">
+        <div style="max-width: 489px; margin: 0 auto;">
+          <h1 style="margin: 0; font-size: 24px; font-weight: 600; color: #1f1f1f;">Your OTP</h1>
+          <p style="margin-top: 17px; font-size: 16px; font-weight: 500;">Hi {{ user_name }},</p>
+          <p style="margin-top: 17px; font-weight: 500; letter-spacing: 0.56px;">
+            Thank you for choosing <strong>Onwone</strong>. Use the following OTP to complete your registration. This code is valid for <span style="font-weight: 600; color: #1f1f1f;">5 minutes</span>. Please do not share this code with anyone, including Onwone staff.
+          </p>
+          <p style="margin-top: 60px; font-size: 40px; font-weight: 700; letter-spacing: 25px; color: #e8b200;">
+            {{ otp }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Help Section -->
+      <p style="max-width: 400px; margin: 90px auto 0; text-align: center; font-weight: 500; color: #8c8c8c;">
+        Need help? Contact us at 
+        <a href="mailto:support@onwone.com" style="color: #cc9900; text-decoration: none;">support@onwone.com</a> 
+        or visit our 
+        <a href="https://onwone.com/help" target="_blank" style="color: #cc9900; text-decoration: none;">Help Center</a>.
+      </p>
+    </main>
+
+    <!-- Footer -->
+    <footer style="width: 100%; max-width: 490px; margin: 20px auto 0; text-align: center; border-top: 1px solid #e6ebf1;">
+      <p style="margin-top: 40px; font-size: 16px; font-weight: 600; color: #434343;">Onwone Studio</p>
+      <p style="margin-top: 8px; color: #434343;">123 Yellow Street, Creativity City</p>
+      <div style="margin-top: 16px;">
+        <a href="#" style="margin: 0 6px;"><img width="36px" src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+        <a href="#" style="margin: 0 6px;"><img width="36px" src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+        <a href="#" style="margin: 0 6px;"><img width="36px" src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+        <a href="#" style="margin: 0 6px;"><img width="36px" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+      </div>
+      <p style="margin-top: 16px; color: #434343;">Copyright © 2025 Onwone. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>

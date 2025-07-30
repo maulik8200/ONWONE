@@ -32,4 +32,6 @@ admin.site.register(Tag)
 admin.site.register(Size)
 admin.site.register(Color)
 admin.site.register(ProductDescriptionBox)
+
+
 admin.site.register(BillingAddress)

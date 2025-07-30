@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from django.core.files.base import ContentFile
 from urllib.parse import urlparse
+from django.template.loader import render_to_string
+from django.core.mail import EmailMultiAlternatives
 
 
 import random
@@ -237,20 +239,33 @@ def register(request):
                 return redirect('register')
             else:
                 otp = random.randint(100000, 999999)
+
+                # Save to session
                 request.session['otp'] = otp
                 request.session['name'] = name
                 request.session['mobile'] = mobile
                 request.session['email'] = email
                 request.session['password'] = password
 
+                # Prepare email
+                subject = 'Your OTP Code for Onwone Registration'
+                from_email = 'noreply@onwone.com'
+                to = [email]
+
+                context = {
+                    'brand': 'Onwone',
+                    'otp': otp,
+                    'user_name': name
+                }
+
+                html_content = render_to_string('emails/otp_email.html', context)
+                text_content = f"Hi {name},\n\nYour OTP for Onwone registration is: {otp}\n\nIf you didn’t request this, please ignore this email.\n\nThank you,\nOnwone Team"
+
+                email_message = EmailMultiAlternatives(subject, text_content, from_email, to)
+                email_message.attach_alternative(html_content, "text/html")
+
                 try:
-                    send_mail(
-                        subject='Your OTP Code',
-                        message=f'Your OTP for registration is: {otp}',
-                        from_email='noreply@yourdomain.com',
-                        recipient_list=[email],
-                        fail_silently=False,
-                    )
+                    email_message.send()
                     messages.info(request, f"OTP sent to {email}. Please check your inbox.")
                 except Exception as e:
                     messages.error(request, f"Failed to send OTP: {str(e)}")
