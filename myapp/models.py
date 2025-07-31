@@ -3,6 +3,8 @@ import os
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.conf import settings
+
 
 # Create your models here.
 
@@ -114,7 +116,7 @@ class Product(models.Model):
 
 
 class BillingAddress(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='billing_address')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='billing_addresses')
     first_name = models.CharField(max_length=100)
     company_name = models.CharField(max_length=255, blank=True, null=True)
     country = models.CharField(max_length=100)
@@ -127,12 +129,11 @@ class BillingAddress(models.Model):
     email = models.EmailField()
 
     def __str__(self):
-        return f"{self.user.username}"
+        return f"{self.first_name} ({self.user.username})"
     
 
 
 
-from django.conf import settings
 
 class CartItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -146,3 +147,12 @@ class CartItem(models.Model):
 
     def subtotal(self):
         return self.item_price() * self.quantity
+    
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=50, unique=True)
+    discount_percent = models.PositiveIntegerField(default=0)  # e.g., 10 for 10%
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.code} - {self.discount_percent}%"

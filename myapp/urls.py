@@ -20,6 +20,9 @@ urlpatterns = [
     path('cart/', cart, name='cart'),
     path('add-to-cart/<int:id>/', add_to_cart, name='add_to_cart'),
     path('remove-from-cart/<int:id>/', remove_from_cart, name='remove_from_cart'),
+    path('apply_coupon/', apply_coupon, name='apply_coupon'),
+    path('remove_coupon/', remove_coupon, name='remove_coupon'),
+    path('add_address/', add_address, name='add_address'),
 
     path('login/', login, name='login'),
     path('register/', register, name='register'),
@@ -27,8 +30,8 @@ urlpatterns = [
     
     path('account/', account, name='account'),
     path('account-billing-address/', account_billing_address, name='account-billing-address'),
-    path('edit-billing-address/', edit_billing_address, name='edit_billing_address'),
-    path('remove-billing-address/', remove_billing_address, name='remove_billing_address'),
+    path('edit-billing-address/<int:address_id>/', edit_billing_address, name='edit_billing_address'),
+    path('remove-billing-address/<int:address_id>/', remove_billing_address, name='remove_billing_address'),
 
     path('upload-excel/', upload_products_excel, name='upload_products_excel'),
 ]

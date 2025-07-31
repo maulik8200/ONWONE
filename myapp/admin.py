@@ -35,3 +35,4 @@ admin.site.register(ProductDescriptionBox)
 
 
 admin.site.register(BillingAddress)
+admin.site.register(Coupon)

@@ -170,20 +170,53 @@ def wishlist(request):
 @login_required(login_url='/login/')
 def cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
-
     subtotal = sum(item.subtotal() for item in cart_items)
+
+    gst_rate = Decimal('0.08')
+    gst = int(Decimal(subtotal) * gst_rate)
+
+    delivery_charge = 0 if subtotal >= 500 else 50
+
+    # Get coupon info from session
+    coupon_code = request.session.get('coupon_code')
+    coupon_discount_percent = request.session.get('coupon_discount', 0)
     
-    gst = int(subtotal * Decimal('0.08'))  # Convert to integer (remove decimal points)
-    delivery_charge = 0 if subtotal >= 500 else 50  # Integer format
-    total = int(subtotal) + gst + delivery_charge
+    # Convert to Decimal before calculation
+    discount_amount = int(Decimal(subtotal) * (Decimal(coupon_discount_percent) / Decimal(100)))
+
+    total = int(subtotal - discount_amount + gst + delivery_charge)
 
     return render(request, 'cart.html', {
         'cart_items': cart_items,
         'subtotal': int(subtotal),
         'gst': gst,
         'delivery_charge': delivery_charge,
+        'discount_amount': discount_amount,
+        'coupon_discount_percent': coupon_discount_percent,
         'total': total,
+        'code': coupon_code,
     })
+
+@login_required(login_url='/login/')
+def apply_coupon(request):
+    if request.method == 'POST':
+        code = request.POST.get('coupon_code')
+        try:
+            coupon = Coupon.objects.get(code__iexact=code, active=True)
+            request.session['coupon_code'] = coupon.code
+            request.session['coupon_discount'] = coupon.discount_percent
+            messages.success(request, f"Coupon '{code}' applied successfully!")
+        except Coupon.DoesNotExist:
+            request.session['coupon_code'] = None
+            request.session['coupon_discount'] = 0
+            messages.error(request, "Invalid or inactive coupon code.")
+    return redirect('cart')  # or whatever your cart page URL name is
+
+def remove_coupon(request):
+    request.session['coupon_code'] = None
+    request.session['coupon_discount'] = 0
+    messages.success(request, "Coupon removed successfully.")
+    return redirect('cart')  # or whatever your cart page URL name is
 
 @login_required(login_url='/login/')
 def add_to_cart(request, id):
@@ -218,6 +251,22 @@ def remove_from_cart(request, id):
     item.delete()
     return redirect('cart')
 
+
+@login_required(login_url='/login/')
+def add_address(request):
+    user = request.user
+    billing_addresses = user.billing_addresses.all()
+
+    if request.method == "POST":
+        selected_id = request.POST.get('selected_address_id')
+        selected_address = get_object_or_404(BillingAddress, id=selected_id, user=user)
+
+        # Save the selected address ID in session
+        request.session['selected_address_id'] = selected_address.id
+
+        return redirect('cart')  # Or 'checkout'
+
+    return render(request, 'add_address.html', {'billing_addresses': billing_addresses})
 
 
 
@@ -368,72 +417,51 @@ def logout(request):
 
 @login_required(login_url='/login/')
 def account(request):
-    billing_address = None
-    if request.user.is_authenticated:
-        try:
-            billing_address = request.user.billing_address
-        except BillingAddress.DoesNotExist:
-            billing_address = None
+    billing_addresses = request.user.billing_addresses.all()  # Use related_name
 
-    return render(request, 'account.html', {'billing_address': billing_address})
+    return render(request, 'account.html', {'billing_addresses': billing_addresses})
 
 @login_required(login_url='/login/')
 def account_billing_address(request):
     if request.method == 'POST':
         user = request.user
-        data = request.POST
+        data = request.POST.getlist('dzName')
 
-        billing_data = {
-            'first_name': data.getlist('dzName')[0],
-            'company_name': data.getlist('dzName')[1],
-            'country': data.getlist('dzName')[2],
-            'street_address_1': data.getlist('dzName')[3],
-            'street_address_2': data.getlist('dzName')[4],
-            'city': data.getlist('dzName')[5],
-            'state': data.getlist('dzName')[6],
-            'postcode': data.getlist('dzName')[7],
-            'phone': data.getlist('dzName')[8],
-            'email': data.getlist('dzName')[9],
-        }
+        billing_address = BillingAddress.objects.create(
+            user=user,
+            first_name=data[0],
+            company_name=data[1],
+            country=data[2],
+            street_address_1=data[3],
+            street_address_2=data[4],
+            city=data[5],
+            state=data[6],
+            postcode=data[7],
+            phone=data[8],
+            email=data[9],
+        )
 
-        BillingAddress.objects.update_or_create(user=user, defaults=billing_data)
-
-        return redirect('account')  # redirect after save
+        return redirect('account')  # Change to your account page or address list page
 
     return render(request, 'account_billing_address.html')
 
 
 
 @login_required(login_url='/login/')
-def edit_billing_address(request):
-    try:
-        billing_address = request.user.billing_address
-    except BillingAddress.DoesNotExist:
-        billing_address = None
+def edit_billing_address(request, address_id):
+    billing_address = get_object_or_404(BillingAddress, id=address_id, user=request.user)
 
     if request.method == 'POST':
-        first_name = request.POST.get('first_name')
-        company_name = request.POST.get('company_name')
-        country = request.POST.get('country')
-        street_address_1 = request.POST.get('street_address_1')
-        street_address_2 = request.POST.get('street_address_2')
-        city = request.POST.get('city')
-        state = request.POST.get('state')
-        postcode = request.POST.get('postcode')
-        phone = request.POST.get('phone')
-        email = request.POST.get('email')
-
-
-        billing_address.first_name = first_name
-        billing_address.company_name = company_name
-        billing_address.country = country
-        billing_address.street_address_1 = street_address_1
-        billing_address.street_address_2 = street_address_2
-        billing_address.city = city
-        billing_address.state = state
-        billing_address.postcode = postcode
-        billing_address.phone = phone
-        billing_address.email = email
+        billing_address.first_name = request.POST.get('first_name')
+        billing_address.company_name = request.POST.get('company_name')
+        billing_address.country = request.POST.get('country')
+        billing_address.street_address_1 = request.POST.get('street_address_1')
+        billing_address.street_address_2 = request.POST.get('street_address_2')
+        billing_address.city = request.POST.get('city')
+        billing_address.state = request.POST.get('state')
+        billing_address.postcode = request.POST.get('postcode')
+        billing_address.phone = request.POST.get('phone')
+        billing_address.email = request.POST.get('email')
         billing_address.save()
 
         return redirect('account')
@@ -442,12 +470,9 @@ def edit_billing_address(request):
 
 
 @login_required(login_url='/login/')
-def remove_billing_address(request):
-    try:
-        billing_address = request.user.billing_address
-        billing_address.delete()
-    except:
-        pass
+def remove_billing_address(request, address_id):
+    billing_address = get_object_or_404(BillingAddress, id=address_id, user=request.user)
+    billing_address.delete()
     return redirect('account')
 
 # Define size sequence to support "S to 5XL"
