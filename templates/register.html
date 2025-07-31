@@ -64,10 +64,31 @@
 						</div>
 
 						{% if otp_required %}
-						<div class="m-b15">
-							<label class="label-title">Enter OTP</label>
-							<input type="text" name="otp" required class="form-control" placeholder="Enter OTP">
-						</div>
+							<div class="m-b15">
+								<label class="label-title">Enter OTP</label>
+								<input type="text" name="otp" required class="form-control" placeholder="Enter OTP">
+								<div class="mt-2 text-danger fw-semibold">
+									OTP expires in <span id="countdown">05:00</span>
+								</div>
+							</div>
+
+							<script>
+								let duration = 300; // 5 minutes = 300 seconds
+								const countdownEl = document.getElementById('countdown');
+
+								const timer = setInterval(function () {
+									const minutes = Math.floor(duration / 60);
+									const seconds = duration % 60;
+									countdownEl.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+									duration--;
+
+									if (duration < 0) {
+										clearInterval(timer);
+										countdownEl.innerText = "EXPIRED";
+										alert("OTP expired. Please reload the page to request a new OTP.");
+									}
+								}, 1000);
+							</script>
 						{% endif %}
 
 						<div class="text-center">

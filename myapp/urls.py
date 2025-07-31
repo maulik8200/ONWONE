@@ -18,9 +18,12 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('wishlist/', wishlist, name='wishlist'),
     path('cart/', cart, name='cart'),
+    path('add-to-cart/<int:id>/', add_to_cart, name='add_to_cart'),
+    path('remove-from-cart/<int:id>/', remove_from_cart, name='remove_from_cart'),
 
     path('login/', login, name='login'),
     path('register/', register, name='register'),
+    path('logout/', logout, name='logout'),
     
     path('account/', account, name='account'),
     path('account-billing-address/', account_billing_address, name='account-billing-address'),

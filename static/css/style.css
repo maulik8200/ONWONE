@@ -11451,6 +11451,7 @@ fieldset:disabled .woocommerce #place_order,
 .bg-light {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+  margin-top: 81px;
 }
 
 .bg-dark {
@@ -27451,8 +27452,8 @@ btn:focus {
 .check-tbl tbody tr td img {
   width: 80px;
   min-width: 80px;
-  height: 80px;
-  border-radius: 30px;
+  height: 115px;
+  border-radius: 10px;
 }
 
 .check-tbl tbody tr td:first-child,
@@ -53335,6 +53336,7 @@ body .working-location img {
   box-shadow: unset;
   border-color: #fff;
   border-radius: 10px;
+  height: 100%;
 }
 
 .dz-product-detail .quick-modal-swiper.thumb-swiper-lg .swiper-slide.swiper-slide-thumb-active img,
@@ -64419,3 +64421,9 @@ footer.footer-dark .icon-bx-wraper {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+
+
+

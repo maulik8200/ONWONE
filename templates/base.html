@@ -18,15 +18,43 @@
     <meta name="robots" content="index, follow">
     <meta name="format-detection" content="telephone=no">
 
-    <meta name="keywords"
-        content="template, ui kit, clothing, delivery, ecommerce, fashion, order, shopping, store, fashion design, fashion store, responsive design, fashion showcase, modern design, fashion technology, e-shop, ecommerce web, eCommerce Website, minimal shop, online shop, online shopping, pixio, user experience, Design Elements, Trendy, Stylish, User-Friendly, Navigation, Product Display, Branding, Development, Visual Design, UI/UX, Website, Web Design">
-    <meta name="description"
-        content="Elevate your online retail presence with Pixio Shop & eCommerce HTML Template. Crafted with precision, this responsive and feature-rich template provides a seamless and visually stunning shopping experience. Explore a world of possibilities with modern design elements, intuitive navigation, and customizable features. Transform your website into a dynamic online storefront with Pixio, where style meets functionality for a captivating and user-friendly eCommerce journey.">
+    <!-- Meta Keywords -->
+    <meta name="keywords" content="Onowne, online clothing store, men's fashion, women's fashion, kids clothing, baby wear, stylish clothing, casual wear, ethnic wear, 
+    western wear, party wear, formal clothing, workwear, activewear, streetwear, luxury clothing, modern fashion, classic outfits, trendy clothes, premium apparel, 
+    affordable fashion, seasonal collection, summer collection, winter wear, autumn outfits, spring fashion, t-shirts, shirts, jeans, pants, trousers, jackets, hoodies, 
+    sweatshirts, cardigans, blazers, suits, co-ords, tracksuits, joggers, denim, ripped jeans, cargo pants, leggings, kurtis, sarees, lehengas, anarkali, dupattas, 
+    indo-western, fusion wear, crop tops, tank tops, tunics, jumpsuits, rompers, dresses, maxi dresses, midi dresses, bodycon, cocktail dresses, nightwear, sleepwear, 
+    loungewear, innerwear, bras, panties, boxers, briefs, thermals, shapewear, ethnic sets, kurta pajama, sherwani, nehru jacket, pathani suit, men’s kurta, women’s suit, 
+    oversized fit, slim fit, regular fit, high-waist, mid-waist, low-rise, flared pants, bootcut jeans, skinny jeans, wide-leg trousers, pleated skirts, mini skirts, 
+    wrap skirts, denim jackets, faux leather jackets, bomber jackets, varsity jackets, trench coats, raincoats, windcheaters, hooded jackets, zip-up hoodies, 
+    pullover hoodies, woolen wear, cotton clothing, linen clothing, silk outfits, chiffon, georgette, rayon, viscose, velvet, crepe, knits, fleece, denim fabric, raw cotton, 
+    stretch fabric, breathable clothing, lightweight wear, wrinkle-free clothes, sustainable clothing, organic cotton, eco-friendly apparel, fashion for men, 
+    fashion for women, couple outfits, matching sets, fashion for teenagers, clothing for toddlers, boys fashion, girls fashion, plus-size clothing, petite wear, 
+    maternity wear, nursing tops, new arrivals, bestsellers, festive collection, Diwali fashion, Eid outfits, Christmas wear, New Year party dresses, 
+    Raksha Bandhan fashion, wedding collection, haldi outfit, mehndi outfit, reception dress, pre-wedding shoot clothes, fashion under budget, budget shopping, 
+    shop fashion online, buy clothes online, clothing deals, fashion sale, clearance sale, flat discounts, free delivery, COD clothing, trending clothes, 
+    latest fashion, new in fashion, fashion influencers, celebrity-inspired fashion, designer clothes, fashion essentials, daily wear, everyday clothing, 
+    smart casuals, semi-formals, online boutique, boutique fashion, elegant clothing, minimal fashion, bold outfits, printed t-shirts, graphic tees, slogan shirts, 
+    monochrome looks, layered fashion, beachwear, resort wear, fashion accessories, scarves, stoles, belts, fashion shoes, casual shoes, boots, fashion bags, tote bags, 
+    handbags, backpacks, stylish backpacks, office wear, college wear, homewear, occasion wear, fashion for all, stylish men's wear, latest women’s fashion, 
+    shop men's clothing, shop women's clothing, ethnic fashion India, online shopping India, Onowne India, Onowne clothing, Onowne fashion, Onowne store, 
+    Onowne online, Onowne shop, affordable fashion India, premium fashion India, Indian clothing store, Indian online shop, shop now, fashion you love, 
+    fashion that fits, made for you, customized fit clothing, size inclusive fashion, top fashion trends, fashion 2025, fashion today, what’s trending in clothing">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Meta Description -->
+    <meta name="description" content="Onowne is a modern and stylish online clothing store designed to redefine your fashion experience. Offering a curated collection of premium apparel for men and women, our platform blends sleek design with intuitive navigation to deliver a seamless and inspiring shopping journey. Discover the latest trends and timeless styles—all at your fingertips.">
 
-    <meta property="og:title" content="Onowne: Shop & eCommerce Bootstrap HTML Template | Onowne">
-    <meta property="og:description"
-        content="Elevate your online retail presence with Pixio Shop & eCommerce HTML Template. Crafted with precision, this responsive and feature-rich template provides a seamless and visually stunning shopping experience. Explore a world of possibilities with modern design elements, intuitive navigation, and customizable features. Transform your website into a dynamic online storefront with Pixio, where style meets functionality for a captivating and user-friendly eCommerce journey.">
-    <meta property="og:image" content="https://pixio.dexignzone.com/xhtml/images/logo.svg">
+    <!-- Open Graph Title -->
+    <meta property="og:title" content="Onowne – Modern Clothing & Fashion eCommerce Website">
+
+    <!-- Open Graph Description -->
+    <meta property="og:description" content="Step into the world of Onowne—where fashion meets innovation. Our sleek, responsive online clothing store is built for comfort, style, and modern lifestyles. From minimalist basics to bold statements, explore our premium collections crafted for trendsetters and everyday icons.">
+
+    <!-- Open Graph Image (optional but recommended) -->
+    <meta property="og:image" content="https://www.onowne.com/static/images/og-image.jpg">
+
+    <!-- Open Graph URL -->
+    <meta property="og:url" content="https://www.onowne.com">
 
     <!-- TWITTER META -->
     <meta name="twitter:title" content="Pixio: Shop & eCommerce Bootstrap HTML Template | Onowne">
@@ -157,17 +185,27 @@
                     <div class="extra-nav">
                         <div class="extra-cell">
                             <ul class="header-right">
-                                <li class="nav-item login-link">
-                                    {% if user.is_authenticated %}
-                                    <a class="nav-link" href="{% url 'account' %}">
-                                        Account
+
+                                <li class="nav-item dropdown wishlist-link">
+                                    <a class="nav-link" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-regular fa-user"></i>
                                     </a>
-                                    {% else %}
-                                    <a class="nav-link" href="{% url 'login' %}">
-                                        Login
-                                    </a>
-                                    {% endif %}
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                        {% if request.user.is_authenticated %}
+                                            <li>
+                                                <a class="dropdown-item" href="{% url 'account' %}">Account</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
                                 </li>
+
                                 <li class="nav-item wishlist-link">
                                     <a class="nav-link" href="{% url 'wishlist' %}">
                                         <i class="iconly-Light-Heart2"></i>

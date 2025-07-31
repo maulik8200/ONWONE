@@ -7,9 +7,18 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from django.core.files.base import ContentFile
-from urllib.parse import urlparse
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
+from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+
+
+from urllib.parse import urlparse
+
+
+from datetime import datetime, timedelta
+from decimal import Decimal
 
 
 import random
@@ -18,6 +27,7 @@ import requests
 
 
 from .models import *
+
 
 # Create your views here.
 
@@ -153,12 +163,60 @@ def faq(request):
 def contact(request):
     return render(request, 'contact.html')
 
+@login_required(login_url='/login/')
 def wishlist(request):
     return render(request, 'wishlist.html')
 
+@login_required(login_url='/login/')
 def cart(request):
-    return render(request, 'cart.html')
+    cart_items = CartItem.objects.filter(user=request.user)
 
+    subtotal = sum(item.subtotal() for item in cart_items)
+    
+    gst = int(subtotal * Decimal('0.08'))  # Convert to integer (remove decimal points)
+    delivery_charge = 0 if subtotal >= 500 else 50  # Integer format
+    total = int(subtotal) + gst + delivery_charge
+
+    return render(request, 'cart.html', {
+        'cart_items': cart_items,
+        'subtotal': int(subtotal),
+        'gst': gst,
+        'delivery_charge': delivery_charge,
+        'total': total,
+    })
+
+@login_required(login_url='/login/')
+def add_to_cart(request, id):
+    product = get_object_or_404(Product, id=id)
+
+    if request.method == 'POST':
+        quantity = int(request.POST.get('quantity', 1))
+        size_id = request.POST.get('size')
+
+        if quantity < 1 or quantity > 4:
+            return HttpResponseBadRequest("Quantity must be between 1 and 4.")
+
+        size = Size.objects.get(id=size_id) if size_id else None
+
+        cart_item, created = CartItem.objects.get_or_create(
+            user=request.user,
+            product=product,
+            size=size,
+            defaults={'quantity': quantity}
+        )
+        if not created:
+            cart_item.quantity += quantity
+            cart_item.save()
+
+        return redirect('cart')  # Redirect to cart page
+
+    return redirect('product_detail', id=id)
+
+@login_required(login_url='/login/')
+def remove_from_cart(request, id):
+    item = get_object_or_404(CartItem, id=id, user=request.user)
+    item.delete()
+    return redirect('cart')
 
 
 
@@ -168,19 +226,31 @@ def cart(request):
 
 
 def login(request):
+    # Step 1: Capture previous page and store it in session
+    if request.method == 'GET':
+        referer = request.META.get('HTTP_REFERER')
+        if referer and 'register' not in referer:
+            request.session['next_url'] = referer
+
     if request.method == 'POST':
         email = request.POST.get('dzName')
         password = request.POST.get('password')
 
         try:
-            # You used email as username during registration
             user_obj = User.objects.get(email=email)
             user = authenticate(request, username=user_obj.username, password=password)
 
             if user is not None:
                 auth_login(request, user)
                 messages.success(request, 'Logged in successfully.')
-                return redirect('home')  # Redirect after login
+
+                # Step 2: Redirect to the previous page if it's not the register page
+                next_url = request.session.get('next_url')
+                if next_url and 'register' not in next_url:
+                    return redirect(next_url)
+                else:
+                    return redirect('home')
+
             else:
                 messages.error(request, 'Invalid email or password.')
         except User.DoesNotExist:
@@ -190,18 +260,31 @@ def login(request):
 
 def register(request):
     if request.method == 'POST':
-        # Step 2: OTP Verification
+        # Step 2: OTP verification
         if 'otp' in request.POST:
             entered_otp = request.POST.get('otp')
             original_otp = request.session.get('otp')
+            otp_created_at_str = request.session.get('otp_created_at')
+
             name = request.session.get('name')
             mobile = request.session.get('mobile')
             email = request.session.get('email')
             password = request.session.get('password')
 
-            # Check if all session fields are still available
-            if not all([original_otp, name, mobile, email, password]):
+            # Check session data presence
+            if not all([original_otp, otp_created_at_str, name, mobile, email, password]):
                 messages.error(request, "Session expired. Please register again.")
+                return redirect('register')
+
+            try:
+                otp_created_at = timezone.datetime.fromisoformat(otp_created_at_str)
+            except Exception:
+                messages.error(request, "Invalid OTP timestamp. Please try again.")
+                return redirect('register')
+
+            if timezone.now() > otp_created_at + timedelta(minutes=5):
+                messages.error(request, "OTP expired. Please register again.")
+                request.session.flush()
                 return redirect('register')
 
             if str(entered_otp) == str(original_otp):
@@ -221,9 +304,10 @@ def register(request):
                     messages.error(request, "Email already registered.")
             else:
                 messages.error(request, "Invalid OTP. Please try again.")
+
             return render(request, 'register.html', {'otp_required': True})
 
-        # Step 1: Form submission
+        # Step 1: Form submitted
         else:
             name = request.POST.get('name')
             mobile = request.POST.get('mobile')
@@ -240,14 +324,15 @@ def register(request):
             else:
                 otp = random.randint(100000, 999999)
 
-                # Save to session
+                # Save session data and timestamp
                 request.session['otp'] = otp
+                request.session['otp_created_at'] = timezone.now().isoformat()
                 request.session['name'] = name
                 request.session['mobile'] = mobile
                 request.session['email'] = email
                 request.session['password'] = password
 
-                # Prepare email
+                # Prepare and send email
                 subject = 'Your OTP Code for Onwone Registration'
                 from_email = 'noreply@onwone.com'
                 to = [email]
@@ -276,6 +361,12 @@ def register(request):
     return render(request, 'register.html')
 
 
+def logout(request):
+    auth_logout(request)
+    messages.success(request, 'You have been logged out successfully.')
+    return redirect('home')  # or 'login' or wherever you want to redirect after logout
+
+@login_required(login_url='/login/')
 def account(request):
     billing_address = None
     if request.user.is_authenticated:
@@ -286,6 +377,7 @@ def account(request):
 
     return render(request, 'account.html', {'billing_address': billing_address})
 
+@login_required(login_url='/login/')
 def account_billing_address(request):
     if request.method == 'POST':
         user = request.user
@@ -312,6 +404,7 @@ def account_billing_address(request):
 
 
 
+@login_required(login_url='/login/')
 def edit_billing_address(request):
     try:
         billing_address = request.user.billing_address
@@ -348,7 +441,7 @@ def edit_billing_address(request):
     return render(request, 'edit_billing_address.html', {'billing_address': billing_address})
 
 
-
+@login_required(login_url='/login/')
 def remove_billing_address(request):
     try:
         billing_address = request.user.billing_address

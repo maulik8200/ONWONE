@@ -128,3 +128,21 @@ class BillingAddress(models.Model):
 
     def __str__(self):
         return f"{self.user.username}"
+    
+
+
+
+from django.conf import settings
+
+class CartItem(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    size = models.ForeignKey(Size, on_delete=models.SET_NULL, null=True, blank=True)
+    quantity = models.PositiveIntegerField(default=1)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    def item_price(self):
+        return self.product.discount_price or self.product.price
+
+    def subtotal(self):
+        return self.item_price() * self.quantity

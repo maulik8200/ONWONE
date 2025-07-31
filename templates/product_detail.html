@@ -24,20 +24,22 @@
 					<div class="col-xl-6 col-md-6">
 						<div class="dz-product-detail sticky-top">
 							<div class="swiper-btn-center-lr">
+
 								<div class="swiper product-gallery-swiper2">
 									<div class="swiper-wrapper" id="lightgallery">
                                         {% for image in product.images.all %}
 										<div class="swiper-slide">
 											<div class="dz-media DZoomImage rounded">
-												<a class="mfp-link lg-item" href="{{ image.image.url }}" data-src="{{ image.image.url }}">
+												<!-- <a class="mfp-link lg-item" href="{{ image.image.url }}" data-src="{{ image.image.url }}">
 													<i class="feather icon-maximize dz-maximize top-right"></i>
-												</a>
+												</a> -->
 												<img src="{{ image.image.url }}" alt="{{ product.title }}">
 											</div>
 										</div>
                                         {% endfor %}
 									</div>
 								</div>
+
 								<div class="swiper product-gallery-swiper thumb-swiper-lg swiper-vertical">
 									<div class="swiper-wrapper">
                                         {% for image in product.images.all %}
@@ -47,6 +49,7 @@
                                         {% endfor %}
 									</div>
 								</div>
+
 							</div>	
 						</div>	
 					</div>
@@ -102,27 +105,33 @@
                                     </span>
 								</div>
 								<div class="product-num gap-md-2 gap-xl-0">
-									<!-- Quantity Dropdown -->
-									<div class="form-group">
-										<label class="form-label">Quantity</label>
-										<select class="form-select" name="quantity">
-											{% for i in "1234" %}
+									<form method="POST" action="{% url 'add_to_cart' product.id %}">
+										{% csrf_token %}
+										<!-- Quantity Dropdown -->
+										<div class="form-group">
+											<label class="form-label">Quantity</label>
+											<select class="form-select" name="quantity">
+												{% for i in "1234" %}
 												<option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
-											{% endfor %}
-										</select>
-									</div>
+												{% endfor %}
+											</select>
+										</div>
 
-									<!-- Size Dropdown -->
-									<div class="form-group">
-										<label class="form-label">Size</label>
-										<select class="form-select" name="size">
-											{% for size in product.sizes.all %}
+										<!-- Size Dropdown -->
+										<div class="form-group">
+											<label class="form-label">Size</label>
+											<select class="form-select" name="size">
+												{% for size in product.sizes.all %}
 												<option value="{{ size.id }}">{{ size.name }}</option>
-											{% endfor %}
-										</select>
-									</div>
+												{% endfor %}
+											</select>
+										</div>
 
-									<div class="meta-content">
+										<button type="submit" class="btn btn-secondary text-uppercase">Add To Cart</button>
+									</form>
+
+
+									<!-- <div class="meta-content">
 										<label class="form-label">Color</label>
 										<div class="d-flex align-items-center color-filter">
                                             {% for color in product.colors.all %}
@@ -132,10 +141,10 @@
                                             </div>
                                             {% endfor %}
                                         </div>
-									</div>
+									</div> -->
 								</div>
 								<div class="btn-group cart-btn">
-									<a href="shop-cart.html" class="btn btn-secondary text-uppercase">Add To Cart</a>
+									<!-- <a href="#" class="btn btn-secondary text-uppercase">Add To Cart</a> -->
 									<a href="shop-wishlist.html" class="btn btn-outline-secondary btn-icon">
 										<i class="icon feather icon-heart"></i>
 										Add To Wishlist
