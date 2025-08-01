@@ -272,7 +272,7 @@ def add_address(request):
 def checkout(request):
     user = request.user
     cart_items = CartItem.objects.filter(user=user)
-    subtotal = sum(item.subtotal() for item in cart_items)
+    subtotal = sum(item.subtotal() for item in cart_items) 
 
     gst_rate = Decimal('0.08')
     gst = int(Decimal(subtotal) * gst_rate)

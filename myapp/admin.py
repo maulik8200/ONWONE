@@ -8,7 +8,7 @@ from .models import *
 
 
 @admin.register(SliderItem)
-class SliderItemAdmin(admin.ModelAdmin):
+class SliderItemAdmin(admin.ModelAdmin): 
     list_display = ('title', 'season')
     search_fields = ('title', 'season')
 

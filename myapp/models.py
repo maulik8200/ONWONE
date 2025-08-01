@@ -115,7 +115,7 @@ class Product(models.Model):
 
 
 
-class BillingAddress(models.Model):
+class BillingAddress(models.Model): 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='billing_addresses')
     first_name = models.CharField(max_length=100)
     company_name = models.CharField(max_length=255, blank=True, null=True)
