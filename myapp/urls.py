@@ -30,6 +30,7 @@ urlpatterns = [
     
     path('account/', account, name='account'),
     path('account-billing-address/', account_billing_address, name='account-billing-address'),
+    path('account-billing-address-2/', account_billing_address_2, name='account-billing-address-2'),
     path('edit-billing-address/<int:address_id>/', edit_billing_address, name='edit_billing_address'),
     path('remove-billing-address/<int:address_id>/', remove_billing_address, name='remove_billing_address'),
 
