@@ -47,7 +47,8 @@
                                 {% for item in cart_items %}
                                 <tr>
                                     <td class="product-item-img">
-                                        <img src="{{ item.product.images.first.image.url }}" alt="{{ item.product.title }}">
+                                        <img src="{{ item.product.images.first.image.url }}"
+                                            alt="{{ item.product.title }}">
                                     </td>
                                     <td class="product-item-name">
                                         {{ item.product.title }}<br>
@@ -60,34 +61,39 @@
                                         <a href="{% url 'remove_from_cart' item.id %}"><i class="ti-close"></i></a>
                                     </td>
                                 </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="6" class="text-center">Your cart is empty.</td>
+                                </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
                     </div>
+
+                    <!-- Coupon Form -->
                     <form method="POST" action="{% url 'apply_coupon' %}">
                         {% csrf_token %}
                         <div class="row shop-form m-t30">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="input-group mb-0">
-                                        <input name="coupon_code" required="required" type="text" class="form-control" placeholder="Coupon Code">
+                                        <input name="coupon_code" required="required" type="text" class="form-control"
+                                            placeholder="Coupon Code">
                                         <div class="input-group-addon">
-                                            <button name="submit" value="Submit" type="submit" class="btn coupon">Apply Coupon</button>
+                                            <button name="submit" value="Submit" type="submit" class="btn coupon">Apply
+                                                Coupon</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
-                        <!-- <div class="col-md-6 text-end">
-                            <a href="shop-cart.html" class="btn btn-secondary">UPDATE CART</a>
-                        </div> -->
-                    </div>
+                </div>
+
+                <!-- Cart Summary -->
                 <div class="col-lg-4">
                     <h4 class="title mb15">Cart Total</h4>
                     <div class="cart-detail">
-                        <a href="javascript:void(0);" class="btn btn-outline-secondary w-100 m-b20">Bank Offer 5%
-                            Cashback</a>
                         <div class="icon-bx-wraper style-4 m-b15">
                             <div class="icon-bx">
                                 <i class="flaticon flaticon-ship"></i>
@@ -97,65 +103,91 @@
                                 <h6 class="dz-title">Enjoy The Product</h6>
                             </div>
                         </div>
+
+                        {% if coupon_discount_percent %}
                         <div class="save-text">
                             <i class="icon feather icon-check-circle"></i>
-                            <span class="m-l10">You will save ₹504 on this order</span>
+                            <span class="m-l10">You will save ₹{{ discount_amount }} on this order</span>
                         </div>
+                        {% endif %}
+
+                        {% if cart_items %}
                         <table>
                             <tbody>
                                 {% for item in cart_items %}
                                 <tr>
-                                    <td><h6 class="mb-0">{{ item.product.title }}</h6></td>
-                                    <td class="price"><h6>₹{{ item.subtotal }}</h6></td>
+                                    <td>
+                                        <h6 class="mb-0">{{ item.product.title }}</h6>
+                                    </td>
+                                    <td class="price">
+                                        <h6>₹{{ item.subtotal }}</h6>
+                                    </td>
                                 </tr>
                                 {% endfor %}
 
-                                <tr><td colspan="2"><hr class="my-2"></td></tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <hr class="my-2">
+                                    </td>
+                                </tr>
 
                                 <tr class="total">
-                                    <td><h6 class="mb-0">Sub Total</h6></td>
+                                    <td>
+                                        <h6 class="mb-0">Sub Total</h6>
+                                    </td>
                                     <td class="price"><strong>₹{{ subtotal }}</strong></td>
                                 </tr>
+
                                 <tr>
-                                    <td><h6 class="mb-0">Delivery Charge</h6></td>
+                                    <td>
+                                        <h6 class="mb-0">Delivery Charge</h6>
+                                    </td>
                                     <td class="price">
-                                        {% if delivery_charge == 0 %}
-                                            FREE
-                                        {% else %}
-                                            ₹{{ delivery_charge }}
-                                        {% endif %}
+                                        {% if delivery_charge == 0 %}FREE{% else %}₹{{ delivery_charge }}{% endif %}
                                     </td>
                                 </tr>
 
                                 {% if coupon_discount_percent %}
                                 <tr>
-                                    <td><h6 class="mb-0">{{ code }} Coupon Applied</h6></td>
+                                    <td>
+                                        <h6 class="mb-0">{{ code }} Coupon Applied</h6>
+                                    </td>
                                     <td class="price text-danger">- ₹{{ discount_amount }}</td>
                                 </tr>
                                 <tr>
-                                    <td><h6 class="mb-0"></h6></td>
+                                    <td></td>
                                     <td class="price text-danger"><a href="{% url 'remove_coupon' %}">Remove</a></td>
                                 </tr>
                                 {% endif %}
 
-                                <tr><td colspan="2"><hr class="my-2"></td></tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <hr class="my-2">
+                                    </td>
+                                </tr>
 
                                 <tr class="total">
-                                    <td><h6 class="mb-0">Total</h6></td>
+                                    <td>
+                                        <h6 class="mb-0">Total</h6>
+                                    </td>
                                     <td class="price"><strong>₹{{ total }}</strong></td>
                                 </tr>
                             </tbody>
-
                         </table>
+                        {% endif %}
+
+                        <!-- Conditional ADD ADDRESS Button -->
+                        {% if cart_items %}
                         <a href="{% url 'add_address' %}" class="btn btn-secondary w-100">ADD ADDRESS</a>
+                        {% else %}
+                        <button class="btn btn-secondary w-100" disabled>ADD ADDRESS</button>
+                        {% endif %}
                     </div>
                 </div>
-                </div>
-                
             </div>
         </div>
-        <!-- Product END -->
     </section>
+
     <!-- contact area End-->
 
 </div>

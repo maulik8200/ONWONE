@@ -23,6 +23,7 @@ urlpatterns = [
     path('apply_coupon/', apply_coupon, name='apply_coupon'),
     path('remove_coupon/', remove_coupon, name='remove_coupon'),
     path('add_address/', add_address, name='add_address'),
+    path('checkout/', checkout, name='checkout'),
 
     path('login/', login, name='login'),
     path('register/', register, name='register'),

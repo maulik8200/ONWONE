@@ -264,9 +264,43 @@ def add_address(request):
         # Save the selected address ID in session
         request.session['selected_address_id'] = selected_address.id
 
-        return redirect('cart')  # Or 'checkout'
+        return redirect('checkout')  # Or 'checkout'
 
     return render(request, 'add_address.html', {'billing_addresses': billing_addresses})
+
+@login_required(login_url='/login/')
+def checkout(request):
+    user = request.user
+    cart_items = CartItem.objects.filter(user=user)
+    subtotal = sum(item.subtotal() for item in cart_items)
+
+    gst_rate = Decimal('0.08')
+    gst = int(Decimal(subtotal) * gst_rate)
+
+    delivery_charge = 0 if subtotal >= 500 else 50
+
+    coupon_code = request.session.get('coupon_code')
+    coupon_discount_percent = request.session.get('coupon_discount', 0)
+    discount_amount = int(Decimal(subtotal) * (Decimal(coupon_discount_percent) / Decimal(100)))
+
+    total = int(subtotal - discount_amount + gst + delivery_charge)
+
+    selected_address_id = request.session.get('selected_address_id')
+    selected_address = None
+    if selected_address_id:
+        selected_address = get_object_or_404(BillingAddress, id=selected_address_id, user=user)
+
+    return render(request, 'checkout.html', {
+        'cart_items': cart_items,
+        'subtotal': int(subtotal),
+        'gst': gst,
+        'delivery_charge': delivery_charge,
+        'discount_amount': discount_amount,
+        'coupon_discount_percent': coupon_discount_percent,
+        'total': total,
+        'code': coupon_code,
+        'selected_address': selected_address,
+    })
 
 
 
@@ -441,7 +475,31 @@ def account_billing_address(request):
             email=data[9],
         )
 
-        return redirect('account')  # Change to your account page or address list page
+        return redirect('account')
+
+    return render(request, 'account_billing_address.html')
+
+@login_required(login_url='/login/')
+def account_billing_address_2(request):
+    if request.method == 'POST':
+        user = request.user
+        data = request.POST.getlist('dzName')
+
+        billing_address = BillingAddress.objects.create(
+            user=user,
+            first_name=data[0],
+            company_name=data[1],
+            country=data[2],
+            street_address_1=data[3],
+            street_address_2=data[4],
+            city=data[5],
+            state=data[6],
+            postcode=data[7],
+            phone=data[8],
+            email=data[9],
+        )
+
+        return redirect('add_address')
 
     return render(request, 'account_billing_address.html')
 
