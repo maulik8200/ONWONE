@@ -19,7 +19,8 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- Meta Keywords -->
-    <meta name="keywords" content="Onowne, online clothing store, men's fashion, women's fashion, kids clothing, baby wear, stylish clothing, casual wear, ethnic wear, 
+    <meta name="keywords"
+        content="Onowne, online clothing store, men's fashion, women's fashion, kids clothing, baby wear, stylish clothing, casual wear, ethnic wear, 
     western wear, party wear, formal clothing, workwear, activewear, streetwear, luxury clothing, modern fashion, classic outfits, trendy clothes, premium apparel, 
     affordable fashion, seasonal collection, summer collection, winter wear, autumn outfits, spring fashion, t-shirts, shirts, jeans, pants, trousers, jackets, hoodies, 
     sweatshirts, cardigans, blazers, suits, co-ords, tracksuits, joggers, denim, ripped jeans, cargo pants, leggings, kurtis, sarees, lehengas, anarkali, dupattas, 
@@ -42,13 +43,15 @@
     fashion that fits, made for you, customized fit clothing, size inclusive fashion, top fashion trends, fashion 2025, fashion today, what’s trending in clothing">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Meta Description -->
-    <meta name="description" content="Onowne is a modern and stylish online clothing store designed to redefine your fashion experience. Offering a curated collection of premium apparel for men and women, our platform blends sleek design with intuitive navigation to deliver a seamless and inspiring shopping journey. Discover the latest trends and timeless styles—all at your fingertips.">
+    <meta name="description"
+        content="Onowne is a modern and stylish online clothing store designed to redefine your fashion experience. Offering a curated collection of premium apparel for men and women, our platform blends sleek design with intuitive navigation to deliver a seamless and inspiring shopping journey. Discover the latest trends and timeless styles—all at your fingertips.">
 
     <!-- Open Graph Title -->
     <meta property="og:title" content="Onowne – Modern Clothing & Fashion eCommerce Website">
 
     <!-- Open Graph Description -->
-    <meta property="og:description" content="Step into the world of Onowne—where fashion meets innovation. Our sleek, responsive online clothing store is built for comfort, style, and modern lifestyles. From minimalist basics to bold statements, explore our premium collections crafted for trendsetters and everyday icons.">
+    <meta property="og:description"
+        content="Step into the world of Onowne—where fashion meets innovation. Our sleek, responsive online clothing store is built for comfort, style, and modern lifestyles. From minimalist basics to bold statements, explore our premium collections crafted for trendsetters and everyday icons.">
 
     <!-- Open Graph Image (optional but recommended) -->
     <meta property="og:image" content="https://www.onowne.com/static/images/og-image.jpg">
@@ -107,6 +110,91 @@
 
 
 
+<style>
+/* Responsive styling for extra-nav */
+@media (max-width: 991.98px) {
+    .extra-nav {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 15px 0;
+        background-color: #fff;
+        border-top: 1px solid #eee;
+    }
+
+    .extra-nav .extra-cell {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .extra-nav .header-right {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .extra-nav .header-right li {
+        list-style: none;
+    }
+
+    .extra-nav .nav-link {
+        font-size: 20px;
+        color: #000;
+    }
+
+    .extra-nav .badge-circle {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        font-size: 10px;
+        padding: 2px 5px;
+        background-color: var(--primary, #CC0D39);
+        color: white;
+        border-radius: 50%;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        left: auto;
+        right: 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .header-nav .btn-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 1000;
+    }
+}
+@media (max-width: 991.98px) {
+    .custom-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        background-color: #000;
+        color: #fff;
+        font-size: 24px;
+        line-height: 36px;
+        text-align: center;
+        border-radius: 0;
+        z-index: 1000;
+    }
+
+    .custom-close span {
+        display: block;
+        font-weight: bold;
+    }
+}
+
+</style>
 
 
 
@@ -122,114 +210,117 @@
 
 
 
+<!-- Header Start -->
+<header class="site-header mo-left header style-1 header-transparent">
+    <!-- Main Header -->
+    <div class="sticky-header main-bar-wraper navbar-expand-lg">
+        <div class="main-bar clearfix">
+            <div class="container-fluid clearfix d-lg-flex d-block">
 
-    <!-- Header Star -->
-    <header class="site-header mo-left header style-1 header-transparent">
-        <!-- Main Header -->
-        <div class="sticky-header main-bar-wraper navbar-expand-lg">
-            <div class="main-bar clearfix">
-                <div class="container-fluid clearfix d-lg-flex d-block">
+                <!-- Website Logo -->
+                <div class="logo-header logo-dark me-md-5">
+                    <a href="{% url 'home' %}">
+                        <img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt="logo">
+                    </a>
+                </div>
 
-                    <!-- Website Logo -->
-                    <div class="logo-header logo-dark me-md-5">
-                        <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt="logo"></a>
+                <!-- Nav Toggle Button -->
+                <button class="navbar-toggler collapsed navicon justify-content-end" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <!-- Main Nav -->
+                <div class="header-nav w3menu navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
+                    <div class="logo-header logo-dark">
+                        <a href="{% url 'home' %}">
+                            <img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt="">
+                        </a>
                     </div>
 
-                    <!-- Nav Toggle Button -->
-                    <button class="navbar-toggler collapsed navicon justify-content-end" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <!-- Mobile Close Button -->
+                    <button class="custom-close d-lg-none" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-label="Close">
+                        <span>&times;</span>
                     </button>
 
-                    <!-- Main Nav -->
-                    <div class="header-nav w3menu navbar-collapse collapse justify-content-start"
-                        id="navbarNavDropdown">
-                        <div class="logo-header logo-dark">
-                            <a href="{% url 'home' %}"><img src="https://pixio.dexignzone.com/xhtml/images/logo.svg" alt=""></a>
-                        </div>
-                        <ul class="nav navbar-nav">
-                            <li class="has-mega-menu sub-menu-down auto-width menu-left">
-                                <a href="{% url 'home' %}"><span>Home</span></a>
+                    <!-- Navigation Links -->
+                    <ul class="nav navbar-nav">
+                        <li class="has-mega-menu sub-menu-down auto-width menu-left">
+                            <a href="{% url 'home' %}"><span>Home</span></a>
+                        </li>
+                        <li class="has-mega-menu sub-menu-down">
+                            <a href="{% url 'shop' %}"><span>Shop</span></a>
+                        </li>
+                        <li class="has-mega-menu sub-menu-down auto-width">
+                            <a href="{% url 'about' %}"><span>About Us</span></a>
+                        </li>
+                        <li class="has-mega-menu sub-menu-down auto-width">
+                            <a href="{% url 'faq' %}"><span>FAQ</span></a>
+                        </li>
+                        <li class="has-mega-menu sub-menu-down">
+                            <a href="{% url 'contact' %}"><span>Contact Us</span></a>
+                        </li>
+                    </ul>
+
+                    <!-- Social Icons -->
+                    <div class="dz-social-icon">
+                        <ul>
+                            <li><a class="fab fa-facebook-f" target="_blank" href="https://www.facebook.com"></a></li>
+                            <li><a class="fab fa-twitter" target="_blank" href="https://twitter.com"></a></li>
+                            <li><a class="fab fa-linkedin-in" target="_blank" href="https://www.linkedin.com"></a></li>
+                            <li><a class="fab fa-instagram" target="_blank" href="https://www.instagram.com"></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Header Icons: Account / Wishlist / Cart -->
+                <div class="extra-nav">
+                    <div class="extra-cell">
+                        <ul class="header-right">
+                            <!-- Account Dropdown -->
+                            <li class="nav-item dropdown wishlist-link">
+                                <a class="nav-link" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa-regular fa-user"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    {% if request.user.is_authenticated %}
+                                    <li><a class="dropdown-item" href="{% url 'account' %}">Account</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                                    <li><a class="dropdown-item" href="#">Orders</a></li>
+                                    {% else %}
+                                    <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                                    {% endif %}
+                                </ul>
                             </li>
-                            <li class="has-mega-menu sub-menu-down">
-                                <a href="{% url 'shop' %}"><span>Shop</span></a>
+
+                            <!-- Wishlist -->
+                            <li class="nav-item wishlist-link">
+                                <a class="nav-link" href="{% url 'wishlist' %}">
+                                    <i class="iconly-Light-Heart2"></i>
+                                </a>
                             </li>
-                            <li class="has-mega-menu sub-menu-down auto-width">
-                                <a href="{% url 'about' %}"><span>About US</span></a>
-                            </li>
-                            <li class="has-mega-menu sub-menu-down auto-width">
-                                <a href="{% url 'faq' %}"><span>FAQ</span></a>
-                            </li>
-                            <li class="has-mega-menu sub-menu-down">
-                                <a href="{% url 'contact' %}"><span>Contact US</span></a>
+
+                            <!-- Cart -->
+                            <li class="nav-item cart-link position-relative">
+                                <a href="{% url 'cart' %}" class="nav-link cart-btn">
+                                    <i class="iconly-Broken-Buy"></i>
+                                    <span class="badge badge-circle">5</span>
+                                </a>
                             </li>
                         </ul>
-                        <div class="dz-social-icon">
-                            <ul>
-                                <li><a class="fab fa-facebook-f" target="_blank"
-                                        href="https://www.facebook.com"></a></li>
-                                <li><a class="fab fa-twitter" target="_blank"
-                                        href="https://twitter.com"></a></li>
-                                <li><a class="fab fa-linkedin-in" target="_blank"
-                                        href="https://www.linkedin.com"></a></li>
-                                <li><a class="fab fa-instagram" target="_blank"
-                                        href="https://www.instagram.com"></a></li>
-                            </ul>
-                        </div>
                     </div>
-
-                    <!-- EXTRA NAV -->
-                    <div class="extra-nav">
-                        <div class="extra-cell">
-                            <ul class="header-right">
-
-                                <li class="nav-item dropdown wishlist-link">
-                                    <a class="nav-link" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-regular fa-user"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                                        {% if request.user.is_authenticated %}
-                                            <li>
-                                                <a class="dropdown-item" href="{% url 'account' %}">Account</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Orders</a>
-                                            </li>
-                                        {% else %}
-                                            <li>
-                                                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
-                                            </li>
-                                        {% endif %}
-                                    </ul>
-                                </li>
-
-                                <li class="nav-item wishlist-link">
-                                    <a class="nav-link" href="{% url 'wishlist' %}">
-                                        <i class="iconly-Light-Heart2"></i>
-                                    </a>
-                                </li>
-                                <li class="nav-item cart-link">
-                                    <a href="{% url 'cart' %}" class="nav-link cart-btn">
-                                        <i class="iconly-Broken-Buy"></i>
-                                        <span class="badge badge-circle">5</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
                 </div>
+
             </div>
         </div>
+    </div>
+</header>
+<!-- Header End -->
 
-    </header>
-    <!-- Header End -->
 
 
 
