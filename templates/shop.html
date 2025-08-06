@@ -5,7 +5,55 @@
 {% block content %}
 
 
+<style>
+/* Overlay for mobile filter */
+#filterOverlay {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+}
 
+/* Sliding filter panel */
+#shopFilter {
+    transition: transform 0.3s ease;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 90%;
+    max-width: 350px;
+    height: 100vh;
+    background: #fff;
+    z-index: 1001;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    transform: translateX(100%);
+    display: block;
+}
+#shopFilter.active {
+    transform: translateX(0);
+}
+@media (min-width: 1200px) {
+    #filterOverlay { display: none !important; }
+    #shopFilter {
+        position: static;
+        height: auto;
+        max-width: 100%;
+        transform: none;
+        box-shadow: none;
+    }
+}
+.panel-close-btn {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1002;
+}
+@media (max-width: 1199px) {
+    .panel-close-btn { display: block; }
+}
+</style>
 
 
 <div class="page-content bg-light margin">
@@ -85,6 +133,7 @@
 							</span>
 
 						</div>
+						
 						<div class="filter-right-area">
 							<div class="form-group border-0">
 								<a href="javascript:void(0);" class="filter-top-btn" id="filterTopBtn">
@@ -106,7 +155,9 @@
 								</a>
 							</div>
 						</div>
+
 					</div>
+
 					<div class="col-xl-12 shop-top-filter">
 						<a href="javascript:void(0);" class="panel-close-btn">
 							<svg width="35" height="35" viewbox="0 0 51 50" fill="none"
