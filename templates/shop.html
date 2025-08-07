@@ -5,55 +5,37 @@
 {% block content %}
 
 
-<style>
-/* Overlay for mobile filter */
-#filterOverlay {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0; top: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.4);
-}
 
-/* Sliding filter panel */
-#shopFilter {
-    transition: transform 0.3s ease;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 90%;
-    max-width: 350px;
-    height: 100vh;
-    background: #fff;
-    z-index: 1001;
-    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-    transform: translateX(100%);
-    display: block;
+
+<style>
+/* Custom UI like your image */
+.noUi-target {
+    background: #ddd;
+    border-radius: 3px;
+    border: none;
+    height: 6px;
 }
-#shopFilter.active {
-    transform: translateX(0);
+.noUi-connect {
+    background: black;
 }
-@media (min-width: 1200px) {
-    #filterOverlay { display: none !important; }
-    #shopFilter {
-        position: static;
-        height: auto;
-        max-width: 100%;
-        transform: none;
-        box-shadow: none;
-    }
+.noUi-horizontal .noUi-handle {
+    background: white;
+    border: 2px solid black;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    top: -6px;
+    cursor: pointer;
+    box-shadow: none;
 }
-.panel-close-btn {
+.noUi-tooltip {
     display: none;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 1002;
-}
-@media (max-width: 1199px) {
-    .panel-close-btn { display: block; }
 }
 </style>
+
+
+
+
 
 
 <div class="page-content bg-light margin">
@@ -133,184 +115,143 @@
 							</span>
 
 						</div>
-						
 						<div class="filter-right-area">
 							<div class="form-group border-0">
 								<a href="javascript:void(0);" class="filter-top-btn" id="filterTopBtn">
-								<svg class="me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" width="20" height="20">
-									<g id="Layer_29" data-name="Layer 29">
-									<path d="M2.54,5H15v.5A1.5,1.5,0,0,0,16.5,7h2A1.5,1.5,0,0,0,20,5.5V5h2.33a.5.5,0,0,0,0-1H20V3.5A1.5,1.5,0,0,0,18.5,2h-2A1.5,1.5,0,0,0,15,3.5V4H2.54a.5.5,0,0,0,0,1Z"></path>
-									<path d="M22.4,20H18v-.5A1.5,1.5,0,0,0,16.5,18h-2A1.5,1.5,0,0,0,13,19.5V20H2.55a.5.5,0,0,0,0,1H13v.5A1.5,1.5,0,0,0,14.5,23h2A1.5,1.5,0,0,0,18,21.5V21h4.4a.5.5,0,0,0,0-1Z"></path>
-									<path d="M8.5,15h2A1.5,1.5,0,0,0,12,13.5V13H22.45a.5.5,0,1,0,0-1H12v-.5A1.5,1.5,0,0,0,10.5,10h-2A1.5,1.5,0,0,0,7,11.5V12H2.6a.5.5,0,1,0,0,1H7v.5A1.5,1.5,0,0,0,8.5,15Z"></path>
-									</g>
-								</svg>
-								Filter
+									<svg class="me-2" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 25 25" width="20"
+										height="20">
+										<g id="Layer_29" data-name="Layer 29">
+											<path
+												d="M2.54,5H15v.5A1.5,1.5,0,0,0,16.5,7h2A1.5,1.5,0,0,0,20,5.5V5h2.33a.5.5,0,0,0,0-1H20V3.5A1.5,1.5,0,0,0,18.5,2h-2A1.5,1.5,0,0,0,15,3.5V4H2.54a.5.5,0,0,0,0,1ZM16,3.5a.5.5,0,0,1,.5-.5h2a.5.5,0,0,1,.5.5v2a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1-.5-.5Z">
+											</path>
+											<path
+												d="M22.4,20H18v-.5A1.5,1.5,0,0,0,16.5,18h-2A1.5,1.5,0,0,0,13,19.5V20H2.55a.5.5,0,0,0,0,1H13v.5A1.5,1.5,0,0,0,14.5,23h2A1.5,1.5,0,0,0,18,21.5V21h4.4a.5.5,0,0,0,0-1ZM17,21.5a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1-.5-.5v-2a.5.5,0,0,1,.5-.5h2a.5.5,0,0,1,.5.5Z">
+											</path>
+											<path
+												d="M8.5,15h2A1.5,1.5,0,0,0,12,13.5V13H22.45a.5.5,0,1,0,0-1H12v-.5A1.5,1.5,0,0,0,10.5,10h-2A1.5,1.5,0,0,0,7,11.5V12H2.6a.5.5,0,1,0,0,1H7v.5A1.5,1.5,0,0,0,8.5,15ZM8,11.5a.5.5,0,0,1,.5-.5h2a.5.5,0,0,1,.5.5v2a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1-.5-.5Z">
+											</path>
+										</g>
+									</svg>
+									Filter
 								</a>
 							</div>
 						</div>
-
 					</div>
+					<div class="col-xl-12 shop-top-filter">
+						<a href="javascript:void(0);" class="panel-close-btn">
+							<svg width="35" height="35" viewbox="0 0 51 50" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path d="M37.748 12.5L12.748 37.5" stroke="white" stroke-width="1.25"
+									stroke-linecap="round" stroke-linejoin="round"></path>
+								<path d="M12.748 12.5L37.748 37.5" stroke="white" stroke-width="1.25"
+									stroke-linecap="round" stroke-linejoin="round"></path>
+							</svg>
+						</a>
+						<!-- Filter Section -->
+						<div class="shop-filter mt-xl-2 mt-0 " id="shopFilter">
+							<aside>
+								<div class="d-flex d-xl-none align-items-center justify-content-between m-b30">
+									<h6 class="title mb-0 fw-normal">
+										<svg class="me-2" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 25 25"
+											width="20" height="20">
+											<g id="Layer_28" data-name="Layer 28">
+												<path
+													d="M2.54,5H15v.5A1.5,1.5,0,0,0,16.5,7h2A1.5,1.5,0,0,0,20,5.5V5h2.33a.5.5,0,0,0,0-1H20V3.5A1.5,1.5,0,0,0,18.5,2h-2A1.5,1.5,0,0,0,15,3.5V4H2.54a.5.5,0,0,0,0,1ZM16,3.5a.5.5,0,0,1,.5-.5h2a.5.5,0,0,1,.5.5v2a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1-.5-.5Z">
+												</path>
+												<path
+													d="M22.4,20H18v-.5A1.5,1.5,0,0,0,16.5,18h-2A1.5,1.5,0,0,0,13,19.5V20H2.55a.5.5,0,0,0,0,1H13v.5A1.5,1.5,0,0,0,14.5,23h2A1.5,1.5,0,0,0,18,21.5V21h4.4a.5.5,0,0,0,0-1ZM17,21.5a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1-.5-.5v-2a.5.5,0,0,1,.5-.5h2a.5.5,0,0,1,.5.5Z">
+												</path>
+												<path
+													d="M8.5,15h2A1.5,1.5,0,0,0,12,13.5V13H22.45a.5.5,0,1,0,0-1H12v-.5A1.5,1.5,0,0,0,10.5,10h-2A1.5,1.5,0,0,0,7,11.5V12H2.6a.5.5,0,1,0,0,1H7v.5A1.5,1.5,0,0,0,8.5,15ZM8,11.5a.5.5,0,0,1,.5-.5h2a.5.5,0,0,1,.5.5v2a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1-.5-.5Z">
+												</path>
+											</g>
+										</svg>
+										Filter
+									</h6>
+								</div>
 
-<div class="col-xl-12 shop-top-filter" id="filterPanel">
-  <a href="javascript:void(0);" class="panel-close-btn" id="closeFilter">
-    <svg width="35" height="35" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M37.748 12.5L12.748 37.5" stroke="white" stroke-width="1.25" stroke-linecap="round" />
-      <path d="M12.748 12.5L37.748 37.5" stroke="white" stroke-width="1.25" stroke-linecap="round" />
-    </svg>
-  </a>
+								
 
-  <div class="shop-filter mt-xl-2 mt-0" id="shopFilter">
-    <aside>
-      <!-- PRICE FILTER -->
-      <div class="widget">
-        <h6 class="widget-title">Price</h6>
-        <form method="get" id="priceFilterForm">
-          {% if selected_color %}
-            <input type="hidden" name="color" value="{{ selected_color }}">
-          {% endif %}
-          {% if selected_size %}
-            <input type="hidden" name="size" value="{{ selected_size }}">
-          {% endif %}
-          {% if selected_category %}
-            <input type="hidden" name="category" value="{{ selected_category }}">
-          {% endif %}
-          {% if selected_tag %}
-            <input type="hidden" name="tag" value="{{ selected_tag }}">
-          {% endif %}
-          <input type="hidden" name="min_price" id="minPriceInput">
-          <input type="hidden" name="max_price" id="maxPriceInput">
-          <div id="price-slider" class="mb-3"></div>
-          <div class="d-flex justify-content-between mt-2">
-            <span>Min Price: ₹<span id="min-price-label">{{ min_price }}</span></span>
-            <span>Max Price: ₹<span id="max-price-label">{{ max_price }}</span></span>
-          </div>
-          <button type="submit" class="btn btn-dark mt-3">Apply</button>
-        </form>
-      </div>
+								<div class="widget">
+									<h6 class="widget-title">Price</h6>
+									<form method="get" id="priceFilterForm">
+										<!-- Preserve existing filters -->
+										{% if selected_color %}
+											<input type="hidden" name="color" value="{{ selected_color }}">
+										{% endif %}
+										{% if selected_size %}
+											<input type="hidden" name="size" value="{{ selected_size }}">
+										{% endif %}
+										{% if selected_category %}
+											<input type="hidden" name="category" value="{{ selected_category }}">
+										{% endif %}
+										{% if selected_tag %}
+											<input type="hidden" name="tag" value="{{ selected_tag }}">
+										{% endif %}
 
-      <!-- SIZE FILTER -->
-      <div class="widget">
-        <h6 class="widget-title">Size</h6>
-        <div class="btn-group product-size flex-wrap">
-          {% for size in sizes %}
-            <a href="?size={{ size.name }}{% if selected_color %}&color={{ selected_color }}{% endif %}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if selected_tag %}&tag={{ selected_tag }}{% endif %}"
-              class="btn {% if size.name == selected_size %}active{% endif %}"
-              {% if size.name == selected_size %}style="background: var(--secondary); color: #fff; border-color: var(--secondary);"{% endif %}>
-              {{ size.name }}
-            </a>
-          {% endfor %}
-        </div>
-      </div>
+										<!-- Hidden inputs to submit actual values -->
+										<input type="hidden" name="min_price" id="minPriceInput">
+										<input type="hidden" name="max_price" id="maxPriceInput">
 
-      <!-- CATEGORY FILTER -->
-      <div class="widget widget_categories">
-        <h6 class="widget-title">Category</h6>
-        <ul>
-          {% for category in categories %}
-            <li class="cat-item">
-              <a href="?category={{ category.name }}{% if selected_color %}&color={{ selected_color }}{% endif %}{% if selected_size %}&size={{ selected_size }}{% endif %}"
-              {% if category.name == selected_category %}style="font-weight:bold;"{% endif %}>
-                {{ category.name }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+										<div id="price-slider" class="mb-3"></div>
 
-      <!-- TAGS FILTER -->
-      <div class="widget get_tag_cloud">
-        <h6 class="widget-title">Tags</h6>
-        <div class="tagcloud">
-          {% for tag in tags %}
-            <a href="?tag={{ tag.name }}{% if selected_color %}&color={{ selected_color }}{% endif %}{% if selected_size %}&size={{ selected_size }}{% endif %}{% if selected_category %}&category={{ selected_category }}{% endif %}"
-            {% if tag.name == selected_tag %}style="font-weight:bold;"{% endif %}>
-              {{ tag.name }}
-            </a>
-          {% endfor %}
-        </div>
-      </div>
-    </aside>
-  </div>
-</div>
+										<div class="d-flex justify-content-between mt-2">
+											<span>Min Price: ₹<span id="min-price-label">{{ min_price }}</span></span>
+											<span>Max Price: ₹<span id="max-price-label">{{ max_price }}</span></span>
+										</div>
 
-<!-- JavaScript Toggle -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const filterBtn = document.getElementById('filterTopBtn');
-    const filterPanel = document.getElementById('filterPanel');
-    const closeBtn = document.getElementById('closeFilter');
+										<button type="submit" class="btn btn-dark mt-3">Apply</button>
+									</form>
+								</div>
+								
 
-    filterBtn.addEventListener('click', function () {
-      filterPanel.classList.add('active');
-    });
-
-    closeBtn.addEventListener('click', function () {
-      filterPanel.classList.remove('active');
-    });
-  });
-</script>
-
-<style>
-/* Custom UI like your image */
-.noUi-target {
-    background: #ddd;
-    border-radius: 3px;
-    border: none;
-    height: 6px;
-}
-.noUi-connect {
-    background: black;
-}
-.noUi-horizontal .noUi-handle {
-    background: white;
-    border: 2px solid black;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    top: -6px;
-    cursor: pointer;
-    box-shadow: none;
-}
-.noUi-tooltip {
-    display: none;
-}
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    var slider = document.getElementById('price-slider');
-    var minPrice = {{ min_price }};
-    var maxPrice = {{ max_price }};
-    var minDb = {{ price_min_value }};  // always 0
-    var maxDb = {{ price_max_value }};  // max price from DB
-
-    noUiSlider.create(slider, {
-        start: [minPrice, maxPrice],
-        connect: true,
-        step: 1,
-        range: {
-            'min': minDb,
-            'max': maxDb
-        },
-    });
-
-    var minLabel = document.getElementById('min-price-label');
-    var maxLabel = document.getElementById('max-price-label');
-    var minInput = document.getElementById('minPriceInput');
-    var maxInput = document.getElementById('maxPriceInput');
-
-    slider.noUiSlider.on('update', function (values, handle) {
-        minLabel.textContent = Math.round(values[0]);
-        maxLabel.textContent = Math.round(values[1]);
-        minInput.value = Math.round(values[0]);
-        maxInput.value = Math.round(values[1]);
-    });
-});
-</script>
+								<div class="widget">
+									<h6 class="widget-title">Size</h6>
+									<div class="btn-group product-size flex-wrap">
+										{% for size in sizes %}
+											<a 
+												href="?size={{ size.name }}{% if selected_color %}&color={{ selected_color }}{% endif %}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if selected_tag %}&tag={{ selected_tag }}{% endif %}"
+												class="btn {% if size.name == selected_size %}active{% endif %}"
+												{% if size.name == selected_size %}style="background: var(--secondary) !important;
+																						  color: #fff;
+																					      border-color: var(--secondary);"{% endif %}>
+												{{ size.name }}
+											</a>
+										{% endfor %}
+									</div>
+								</div>
 
 
+								<div class="widget widget_categories">
+									<h6 class="widget-title">Category</h6>
+									<ul>
+										{% for category in categories %}
+										<li class="cat-item">
+											<a href="?category={{ category.name }}{% if selected_color %}&color={{ selected_color }}{% endif %}{% if selected_size %}&size={{ selected_size }}{% endif %}"
+											{% if category.name == selected_category %}style="font-weight:bold;"{% endif %}>
+												{{ category.name }}
+											</a>
+										</li>
+										{% endfor %}
+									</ul>
+								</div>
 
+								<div class="widget wid	get_tag_cloud">
+									<h6 class="widget-title">Tags</h6>
+									<div class="tagcloud">
+										{% for tag in tags %}
+											<a href="?tag={{ tag.name }}{% if selected_color %}&color={{ selected_color }}{% endif %}{% if selected_size %}&size={{ selected_size }}{% endif %}{% if selected_category %}&category={{ selected_category }}{% endif %}"
+											{% if tag.name == selected_tag %}style="font-weight:bold;"{% endif %}>
+												{{ tag.name }}
+											</a>
+										{% endfor %}
+									</div>
+								</div>
 
+								
+							</aside>
+						</div>
+					</div>
 
 
 					<div class="row">
@@ -340,21 +281,10 @@ document.addEventListener("DOMContentLoaded", function () {
 										</div>
 									{% endfor %}
 									<!-- End of Product Card -->
-
-
 								</div>
 							</div>
 						</div>
 					</div>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -421,9 +351,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var slider = document.getElementById('price-slider');
+    var minPrice = {{ min_price }};
+    var maxPrice = {{ max_price }};
+    var minDb = {{ price_min_value }};  // always 0
+    var maxDb = {{ price_max_value }};  // max price from DB
 
+    noUiSlider.create(slider, {
+        start: [minPrice, maxPrice],
+        connect: true,
+        step: 1,
+        range: {
+            'min': minDb,
+            'max': maxDb
+        },
+    });
 
+    var minLabel = document.getElementById('min-price-label');
+    var maxLabel = document.getElementById('max-price-label');
+    var minInput = document.getElementById('minPriceInput');
+    var maxInput = document.getElementById('maxPriceInput');
 
+    slider.noUiSlider.on('update', function (values, handle) {
+        minLabel.textContent = Math.round(values[0]);
+        maxLabel.textContent = Math.round(values[1]);
+        minInput.value = Math.round(values[0]);
+        maxInput.value = Math.round(values[1]);
+    });
+});
+</script>
 
 
 {% endblock %}
