@@ -11451,7 +11451,6 @@ fieldset:disabled .woocommerce #place_order,
 .bg-light {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
-  margin-top: 81px;
 }
 
 .bg-dark {
