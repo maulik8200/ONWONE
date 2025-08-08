@@ -50,7 +50,7 @@
 				</svg>
 				<div>
 					<span class="sub-title">Summer Collection</span>
-					<h4 class="title">Trendy and Claassic for the New Season</h4>
+					<h4 class="title">Trendy and Classic for the New Season</h4>
 				</div>
 			</div>
 			<svg class="star-1" xmlns="http://www.w3.org/2000/svg" width="94" height="94" viewbox="0 0 94 94"
@@ -129,12 +129,14 @@
 
 							<div class="dz-content">
 								<h5 class="title"><a href="{% url 'product_detail' product.id %}">{{ product.title }}</a></h5>
+							</div>
+							<div class="dz-content">
 								<h5 class="price">
 									{% if product.discount_price %}
-										<span class="text-muted text-decoration-line-through">${{ product.price }}</span>
-										${{ product.discount_price }}
+										₹{{ product.discount_price }}
+										<span class="text-muted text-decoration-line-through">₹{{ product.price }}</span>
 									{% else %}
-										${{ product.price }}
+										₹{{ product.price }}
 									{% endif %}
 								</h5>
 							</div>
@@ -367,41 +369,35 @@
 				<ul id="masonry" class="row g-xl-4 g-3">
 					{% for product in popular_products %}
 					<li class="card-container col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6 Tops wow fadeInUp" data-wow-delay="0.6s">
-						<div class="shop-card">
-							<div class="dz-media">
-								{% if product.images.first %}
-								<img src="{{ product.images.first.image.url }}" alt="{{ product.title }}">
-								{% else %}
-								<img src="{% static 'path/to/default-image.jpg' %}" alt="No image available">
-								{% endif %}
+						<a href="{% url 'product_detail' product.id %}" target="_blank" class="shop-card-link">
+							<div class="shop-card">
+								<div class="dz-media">
+									{% if product.images.first %}
+										<img src="{{ product.images.first.image.url }}" alt="{{ product.title }}">
+									{% else %}
+										<img src="{% static 'path/to/default-image.jpg' %}" alt="No image available">
+									{% endif %}
+								</div>
 
-								<div class="shop-meta">
-									<div class="btn btn-primary meta-icon dz-wishicon">
-										<i class="icon feather icon-heart dz-heart"></i>
-										<i class="icon feather icon-heart-on dz-heart-fill"></i>
-									</div>
-									<div class="btn btn-primary meta-icon dz-carticon">
-										<i class="flaticon flaticon-basket"></i>
-										<i class="flaticon flaticon-basket-on dz-heart-fill"></i>
-									</div>
+								<div class="dz-content">
+									<h5 class="title">{{ product.title }}</h5>
+								</div>
+								
+								<div class="dz-content">
+									<h5 class="price">
+										{% if product.discount_price %}
+											₹{{ product.discount_price }}
+											<span class="text-muted text-decoration-line-through">₹{{ product.price }}</span>
+										{% else %}
+											₹{{ product.price }}
+										{% endif %}
+									</h5>
 								</div>
 							</div>
-
-							<div class="dz-content">
-								<h5 class="title"><a href="{% url 'product_detail' product.id %}">{{ product.title }}</a></h5>
-								<h5 class="price">
-									{% if product.discount_price %}
-										<span class="text-muted text-decoration-line-through">${{ product.price }}</span>
-										${{ product.discount_price }}
-									{% else %}
-										${{ product.price }}
-									{% endif %}
-								</h5>
-							</div>
-
-						</div>
+						</a>
 					</li>
 					{% endfor %}
+
 				</ul>
 			</div>
 

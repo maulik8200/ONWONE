@@ -39646,7 +39646,7 @@ video#video-background {
 .shop-card .dz-content {
   text-align: start;
   background-color: transparent;
-  padding: 20px 0;
+  padding: 5px 0 0 0;
   display: flex;
   justify-content: space-between;
 }
@@ -39655,7 +39655,7 @@ video#video-background {
   margin-bottom: 0;
   font-weight: 600;
   text-transform: capitalize;
-  width: 70%;
+  width: 100%;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -40610,12 +40610,13 @@ video#video-background {
 
 @media only screen and (max-width: 575px) {
   .shop-card .dz-content {
-    padding: 10px;
+    padding: 5px 0px 0px 0px;
     text-align: left;
+
   }
 
   .shop-card .dz-content .title {
-    font-size: 14px;
+    font-size: 10px;
     line-height: 1.2;
   }
 
